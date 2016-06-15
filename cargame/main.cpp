@@ -23,7 +23,7 @@
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(1600, 1200), "SFML window");
 
     // Set the Icon
     sf::Image icon;
@@ -38,7 +38,9 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
-
+    sf::Transform transform;
+    transform.scale(sf::Vector2f(2, 2));
+    
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
@@ -78,7 +80,7 @@ int main(int, char const**)
         window.clear();
 
         // Draw the sprite
-        window.draw(sprite);
+        window.draw(sprite, transform);
 
         // Draw the string
         window.draw(text);

@@ -13,6 +13,8 @@
 		051CE0141D0FE99100AEA9CC /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 051CE0131D0FE99100AEA9CC /* nice_music.ogg */; };
 		051CE0161D0FE99100AEA9CC /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 051CE0151D0FE99100AEA9CC /* sansation.ttf */; };
 		051CE0181D0FE99100AEA9CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 051CE0171D0FE99100AEA9CC /* icon.png */; };
+		051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE01E1D10BEB600AEA9CC /* Entity.cpp */; };
+		051CE0781D112EC400AEA9CC /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE0761D112EC400AEA9CC /* Map.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,11 @@
 		051CE0131D0FE99100AEA9CC /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		051CE0151D0FE99100AEA9CC /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		051CE0171D0FE99100AEA9CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		051CE01E1D10BEB600AEA9CC /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		051CE01F1D10BEB600AEA9CC /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		051CE0761D112EC400AEA9CC /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		051CE0771D112EC400AEA9CC /* Map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
+		051CE0791D112F7200AEA9CC /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +64,14 @@
 		051CE0081D0FE99100AEA9CC /* cargame */ = {
 			isa = PBXGroup;
 			children = (
+				051CE0791D112F7200AEA9CC /* Config.hpp */,
+				051CE0761D112EC400AEA9CC /* Map.cpp */,
+				051CE0771D112EC400AEA9CC /* Map.hpp */,
 				051CE00B1D0FE99100AEA9CC /* ResourcePath.mm */,
 				051CE00D1D0FE99100AEA9CC /* ResourcePath.hpp */,
 				051CE00E1D0FE99100AEA9CC /* main.cpp */,
+				051CE01E1D10BEB600AEA9CC /* Entity.cpp */,
+				051CE01F1D10BEB600AEA9CC /* Entity.hpp */,
 				051CE0101D0FE99100AEA9CC /* Resources */,
 				051CE0091D0FE99100AEA9CC /* Supporting Files */,
 			);
@@ -173,6 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				051CE00F1D0FE99100AEA9CC /* main.cpp in Sources */,
+				051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */,
+				051CE0781D112EC400AEA9CC /* Map.cpp in Sources */,
 				051CE00C1D0FE99100AEA9CC /* ResourcePath.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
