@@ -8,6 +8,5 @@
 
 #include "Entity.hpp"
 
-
-
-
+#include <stdio.h>
+#include <SFML/Graphics.hpp>

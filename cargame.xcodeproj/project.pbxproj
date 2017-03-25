@@ -32,6 +32,8 @@
 		051CE0761D112EC400AEA9CC /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		051CE0771D112EC400AEA9CC /* Map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		051CE0791D112F7200AEA9CC /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
+		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				051CE0791D112F7200AEA9CC /* Config.hpp */,
+				05853D441E86EE76005C54E7 /* MovingEntity.hpp */,
+				05853D451E86F05C005C54E7 /* Vehicle.hpp */,
 				051CE0761D112EC400AEA9CC /* Map.cpp */,
 				051CE0771D112EC400AEA9CC /* Map.hpp */,
 				051CE00B1D0FE99100AEA9CC /* ResourcePath.mm */,
@@ -325,6 +329,7 @@
 				051CE01D1D0FE99100AEA9CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

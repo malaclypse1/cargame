@@ -16,7 +16,9 @@ class Entity {
     sf::Vector2i worldLoc;      //location of tile in world
     sf::Vector2f tileLoc;       //location within tile
     int z;                      //height
+    float heading;              //rotation in degrees
     
+    virtual void draw();
 };
 
 #endif /* Entity_hpp */
