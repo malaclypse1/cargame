@@ -17,7 +17,7 @@
 
 class Vehicle : public MovingEntity
 {
-    
+    int armor;
 };
 
 #endif /* Vehicle_h */
