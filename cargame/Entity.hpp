@@ -13,6 +13,7 @@
 #include <SFML/Graphics.hpp>
 
 class Entity {
+public:
     sf::Vector2i worldLoc;      //location of tile in world
     sf::Vector2f tileLoc;       //location within tile
     int z;                      //height

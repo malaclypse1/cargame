@@ -16,6 +16,7 @@
 
 class MovingEntity : public Entity
 {
+public:
     sf::Vector2f velocity;
 };
 #endif /* MovingEntity_h */

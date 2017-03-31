@@ -14,10 +14,13 @@
 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
+#include <vector>
+
+class Component;
 
 class Vehicle : public MovingEntity
 {
-    int armor;
+    std::vector<Component> components;
 };
 
 #endif /* Vehicle_h */

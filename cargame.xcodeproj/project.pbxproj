@@ -15,6 +15,7 @@
 		051CE0181D0FE99100AEA9CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 051CE0171D0FE99100AEA9CC /* icon.png */; };
 		051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE01E1D10BEB600AEA9CC /* Entity.cpp */; };
 		051CE0781D112EC400AEA9CC /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE0761D112EC400AEA9CC /* Map.cpp */; };
+		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		051CE0791D112F7200AEA9CC /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
+		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
+		0586C1C71E8EC23D003BB06F /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 				051CE0791D112F7200AEA9CC /* Config.hpp */,
 				05853D441E86EE76005C54E7 /* MovingEntity.hpp */,
 				05853D451E86F05C005C54E7 /* Vehicle.hpp */,
+				05853D461E88AA8F005C54E7 /* Component.hpp */,
+				0586C1C71E8EC23D003BB06F /* Component.cpp */,
 				051CE0761D112EC400AEA9CC /* Map.cpp */,
 				051CE0771D112EC400AEA9CC /* Map.hpp */,
 				051CE00B1D0FE99100AEA9CC /* ResourcePath.mm */,
@@ -192,6 +197,7 @@
 				051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */,
 				051CE0781D112EC400AEA9CC /* Map.cpp in Sources */,
 				051CE00C1D0FE99100AEA9CC /* ResourcePath.mm in Sources */,
+				0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
