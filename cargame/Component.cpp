@@ -9,17 +9,19 @@
 #include "Component.hpp"
 #include "Vehicle.hpp"
 
-#include <stdio.h>
+//#include <stdio.h>
+#include <iostream>
 #include <cmath>
 #include <SFML/Graphics.hpp>
 
 Component* Component::nextHit(float damageDir)
 {
-    float relDamDir = damageDir - ofVehicle->heading;
+    float relDamDir = damageDir - ofVehicle->getHeading();
     //damage at 90 degree increments should pass straight through. At inbetween angles, should have a chance
     //of going sideways
-    float randDegree = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/90));
-    //cardinal direction of damage (0 = N, 1 = E, etc)
+    //generate random float between 0 and 90
+    float randDegree = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX)) * 90.0f;
+    //cardinal direction of damage (0 = N, 1 = E, etc) - closest cardinal counterclockwise
     int cardinal = ((int) relDamDir/90)%4;
     //angle between cardinal and damage direction 0-90
     float acute = fmod(relDamDir, 90.0f);
@@ -50,4 +52,7 @@ Component* Component::nextHit(float damageDir)
                 return fwd;
             break;
     }
+    //something went wrong - should never get here
+    std::cerr << "error Component.cpp: should never not exit on switch";
+    return nullptr;
 }

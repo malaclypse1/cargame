@@ -11,6 +11,7 @@
 
 #include "Entity.hpp"
 #include "MovingEntity.hpp"
+#include "carMath.hpp"
 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
@@ -20,7 +21,20 @@ class Component;
 
 class Vehicle : public MovingEntity
 {
-    std::vector<Component> components;
+    //std::vector<Component> components;
+    //others
+    public:
+        //=============================================
+        //constructors
+        Vehicle();
+        Vehicle(const sf::Texture& entitySprite);
+    
+        void turnLeft(float turnDegrees);
+        void turnRight(float turnDegrees);
+        void brake(float brakeForce);
+        void accelerate(float acceleration);
 };
+
+
 
 #endif /* Vehicle_h */

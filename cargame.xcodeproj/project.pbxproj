@@ -15,6 +15,11 @@
 		051CE0181D0FE99100AEA9CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 051CE0171D0FE99100AEA9CC /* icon.png */; };
 		051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE01E1D10BEB600AEA9CC /* Entity.cpp */; };
 		051CE0781D112EC400AEA9CC /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051CE0761D112EC400AEA9CC /* Map.cpp */; };
+		053D181220C9CB8100B70272 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D181120C9CB8100B70272 /* car.png */; };
+		053D181420C9EEC500B70272 /* Vehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181320C9EEC500B70272 /* Vehicle.cpp */; };
+		053D181620C9EEE600B70272 /* MovingEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181520C9EEE600B70272 /* MovingEntity.cpp */; };
+		053D181820CF07F000B70272 /* carMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181720CF07F000B70272 /* carMath.cpp */; };
+		053D181B20D067A300B70272 /* desert.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D181A20D067A300B70272 /* desert.png */; };
 		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +38,12 @@
 		051CE0761D112EC400AEA9CC /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		051CE0771D112EC400AEA9CC /* Map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		051CE0791D112F7200AEA9CC /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		053D181120C9CB8100B70272 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		053D181320C9EEC500B70272 /* Vehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vehicle.cpp; sourceTree = "<group>"; };
+		053D181520C9EEE600B70272 /* MovingEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovingEntity.cpp; sourceTree = "<group>"; };
+		053D181720CF07F000B70272 /* carMath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = carMath.cpp; sourceTree = "<group>"; };
+		053D181920CF0BBB00B70272 /* carMath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carMath.hpp; sourceTree = "<group>"; };
+		053D181A20D067A300B70272 /* desert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desert.png; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
@@ -70,8 +81,12 @@
 			isa = PBXGroup;
 			children = (
 				051CE0791D112F7200AEA9CC /* Config.hpp */,
+				053D181720CF07F000B70272 /* carMath.cpp */,
+				053D181920CF0BBB00B70272 /* carMath.hpp */,
 				05853D441E86EE76005C54E7 /* MovingEntity.hpp */,
+				053D181520C9EEE600B70272 /* MovingEntity.cpp */,
 				05853D451E86F05C005C54E7 /* Vehicle.hpp */,
+				053D181320C9EEC500B70272 /* Vehicle.cpp */,
 				05853D461E88AA8F005C54E7 /* Component.hpp */,
 				0586C1C71E8EC23D003BB06F /* Component.cpp */,
 				051CE0761D112EC400AEA9CC /* Map.cpp */,
@@ -98,6 +113,8 @@
 		051CE0101D0FE99100AEA9CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				053D181A20D067A300B70272 /* desert.png */,
+				053D181120C9CB8100B70272 /* car.png */,
 				051CE0111D0FE99100AEA9CC /* cute_image.jpg */,
 				051CE0131D0FE99100AEA9CC /* nice_music.ogg */,
 				051CE0151D0FE99100AEA9CC /* sansation.ttf */,
@@ -133,7 +150,7 @@
 		051CDFFD1D0FE99100AEA9CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Philip Routley";
 				TargetAttributes = {
 					051CE0051D0FE99100AEA9CC = {
@@ -163,8 +180,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				053D181B20D067A300B70272 /* desert.png in Resources */,
 				051CE0181D0FE99100AEA9CC /* icon.png in Resources */,
 				051CE0161D0FE99100AEA9CC /* sansation.ttf in Resources */,
+				053D181220C9CB8100B70272 /* car.png in Resources */,
 				051CE0141D0FE99100AEA9CC /* nice_music.ogg in Resources */,
 				051CE0121D0FE99100AEA9CC /* cute_image.jpg in Resources */,
 			);
@@ -195,8 +214,11 @@
 			files = (
 				051CE00F1D0FE99100AEA9CC /* main.cpp in Sources */,
 				051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */,
+				053D181620C9EEE600B70272 /* MovingEntity.cpp in Sources */,
 				051CE0781D112EC400AEA9CC /* Map.cpp in Sources */,
+				053D181820CF07F000B70272 /* carMath.cpp in Sources */,
 				051CE00C1D0FE99100AEA9CC /* ResourcePath.mm in Sources */,
+				053D181420C9EEC500B70272 /* Vehicle.cpp in Sources */,
 				0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,17 +229,39 @@
 		051CE0191D0FE99100AEA9CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					x86_64,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks/,
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					"$(inherited)",
@@ -227,6 +271,7 @@
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SFML_SYSTEM)",
@@ -254,17 +299,38 @@
 		051CE01A1D0FE99100AEA9CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					x86_64,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks/,
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					"$(inherited)",
@@ -301,8 +367,10 @@
 		051CE01C1D0FE99100AEA9CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = "cargame/cargame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chicmagnate.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -310,8 +378,10 @@
 		051CE01D1D0FE99100AEA9CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				INFOPLIST_FILE = "cargame/cargame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chicmagnate.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

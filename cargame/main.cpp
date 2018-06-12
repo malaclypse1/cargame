@@ -16,12 +16,17 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <sstream>
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
+#include "Vehicle.hpp"
 
 int main(int, char const**)
 {
+    float turnRate = 0.1f; //temporary!
+    float accel = 0.001f;
+    
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(1600, 1200), "SFML window");
 
@@ -33,13 +38,22 @@ int main(int, char const**)
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
+    sf::Texture groundTexture;
+    if (!groundTexture.loadFromFile(resourcePath() + "desert.png")) {
         return EXIT_FAILURE;
     }
-    sf::Sprite sprite(texture);
-    sf::Transform transform;
-    transform.scale(sf::Vector2f(2, 2));
+    sf::Sprite tile(groundTexture);
+    
+    // Create a player car
+    sf::Texture playerTexture;
+    if (!playerTexture.loadFromFile(resourcePath() + "car.png")) {
+        return EXIT_FAILURE;
+    }
+    Vehicle playerCar(playerTexture);
+    
+    // Camera focus position (window center)
+    // This might become a class
+    sf::Vector2f camera;
     
     // Create a graphical text to display
     sf::Font font;
@@ -65,24 +79,70 @@ int main(int, char const**)
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // Close window: exit
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
+            switch(event.type)
+            {
+                // Close window: exit
+                case sf::Event::Closed:
+                    window.close();
+                
+                // key pressed
+                case sf::Event::KeyPressed:
+                    //if key is escape, close window
+                    if (event.key.code == sf::Keyboard::Escape)
+                        window.close();
+                        break;
+                default:
+                    break;
             }
         }
-
+        //ship control
+        if (true /*playerCar.getState() == SS_GOOD*/) {
+            //poll joystick
+//            joyXpos = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+//            joyYpos = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+            
+            
+            //left turns
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                playerCar.turnLeft(turnRate);
+//            else if (joyXpos < -5) //if joystick left of deadzone
+//                ship.rotateLeft((-joyXpos-5)*gShipAgility/60); //joysticks can turn faster than keys
+            
+            //right turns
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                playerCar.turnRight(turnRate);
+//            else if (joyXpos > 5) //if joystick right of deadzone
+//                ship.rotateRight((joyXpos-5)*gShipAgility/60);
+            
+            //thrust
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                playerCar.accelerate(accel);
+//            else if (joyYpos < -5) //if joystick up from deadzone
+//                ship.applyThrust((-joyYpos-5)*gThrust/95);
+            
+            //brake
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                playerCar.brake(accel);
+//            else if (joyYpos > 5) //if joystick is down from deadzone
+//                ship.rotateRetro((joyYpos-5)*gShipAgility/60);
+        }
         // Clear screen
         window.clear();
 
         // Draw the sprite
-        window.draw(sprite, transform);
+        window.draw(tile);
+        playerCar.updateLocation();
+        playerCar.draw(window);
 
         // Draw the string
+        std::ostringstream ss;
+        sf::Vector2f vel = playerCar.getVelocity();
+        sf::Vector2f tile = playerCar.getTileLoc();
+        sf::Vector2i world = playerCar.getWorldLoc();
+        ss << "heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y << ")";
+        ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
+        std::string s(ss.str());
+        text.setString(s);
         window.draw(text);
 
         // Update the window
