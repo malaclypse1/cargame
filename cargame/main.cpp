@@ -21,6 +21,9 @@
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
 #include "Vehicle.hpp"
+#include "Camera.hpp"
+#include "Config.hpp"
+#include "Map.hpp"
 
 int main(int, char const**)
 {
@@ -28,7 +31,7 @@ int main(int, char const**)
     float accel = 0.001f;
     
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(1600, 1200), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML window");
 
     // Set the Icon
     sf::Image icon;
@@ -42,6 +45,7 @@ int main(int, char const**)
     if (!groundTexture.loadFromFile(resourcePath() + "desert.png")) {
         return EXIT_FAILURE;
     }
+    Map map;
     sf::Sprite tile(groundTexture);
     
     // Create a player car
@@ -53,7 +57,9 @@ int main(int, char const**)
     
     // Camera focus position (window center)
     // This might become a class
-    sf::Vector2f camera;
+    Camera camera;
+    const sf::Vector2f initCameraPos(WINDOW_WIDTH/2,WINDOW_HEIGHT/2);
+    camera.setWindowPosition(initCameraPos);
     
     // Create a graphical text to display
     sf::Font font;
@@ -126,6 +132,14 @@ int main(int, char const**)
 //            else if (joyYpos > 5) //if joystick is down from deadzone
 //                ship.rotateRetro((joyYpos-5)*gShipAgility/60);
         }
+        
+        // center camera on player car
+        camera.setTileLoc(playerCar.getTileLoc());
+        camera.setWorldLoc(playerCar.getWorldLoc());
+        
+        // Draw map
+        map.draw(window,camera);
+        
         // Clear screen
         window.clear();
 

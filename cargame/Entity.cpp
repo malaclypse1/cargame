@@ -115,3 +115,9 @@ void Entity::setWorldLoc(sf::Vector2i newWorldLoc) {
     worldLoc = newWorldLoc;
 }
 
+void Entity::setWindowPosition(sf::Vector2f position) { 
+    //need camera?
+    mSprite.setPosition(position);
+}
+
+

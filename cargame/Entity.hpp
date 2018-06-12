@@ -37,6 +37,7 @@ public:
     void setTileLoc(sf::Vector2f newTileLoc);
     void setHeight(int newHeight);
     void setHeading(float newHeading);
+    void setWindowPosition(sf::Vector2f position);
     void changeWorldLoc(sf::Vector2i newWorldLoc);
     void changeTileLoc(sf::Vector2f newTileLoc);
     void changeHeight(int newHeight);

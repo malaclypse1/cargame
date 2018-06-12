@@ -20,6 +20,7 @@
 		053D181620C9EEE600B70272 /* MovingEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181520C9EEE600B70272 /* MovingEntity.cpp */; };
 		053D181820CF07F000B70272 /* carMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181720CF07F000B70272 /* carMath.cpp */; };
 		053D181B20D067A300B70272 /* desert.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D181A20D067A300B70272 /* desert.png */; };
+		053D181E20D06BAF00B70272 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181C20D06BAF00B70272 /* Camera.cpp */; };
 		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		053D181720CF07F000B70272 /* carMath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = carMath.cpp; sourceTree = "<group>"; };
 		053D181920CF0BBB00B70272 /* carMath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carMath.hpp; sourceTree = "<group>"; };
 		053D181A20D067A300B70272 /* desert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desert.png; sourceTree = "<group>"; };
+		053D181C20D06BAF00B70272 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		053D181D20D06BAF00B70272 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 				051CE0791D112F7200AEA9CC /* Config.hpp */,
 				053D181720CF07F000B70272 /* carMath.cpp */,
 				053D181920CF0BBB00B70272 /* carMath.hpp */,
+				053D181C20D06BAF00B70272 /* Camera.cpp */,
+				053D181D20D06BAF00B70272 /* Camera.hpp */,
 				05853D441E86EE76005C54E7 /* MovingEntity.hpp */,
 				053D181520C9EEE600B70272 /* MovingEntity.cpp */,
 				05853D451E86F05C005C54E7 /* Vehicle.hpp */,
@@ -216,6 +221,7 @@
 				051CE0201D10BEB600AEA9CC /* Entity.cpp in Sources */,
 				053D181620C9EEE600B70272 /* MovingEntity.cpp in Sources */,
 				051CE0781D112EC400AEA9CC /* Map.cpp in Sources */,
+				053D181E20D06BAF00B70272 /* Camera.cpp in Sources */,
 				053D181820CF07F000B70272 /* carMath.cpp in Sources */,
 				051CE00C1D0FE99100AEA9CC /* ResourcePath.mm in Sources */,
 				053D181420C9EEC500B70272 /* Vehicle.cpp in Sources */,
