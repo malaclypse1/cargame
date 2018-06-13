@@ -8,7 +8,12 @@
 
 #include "Camera.hpp"
 
-
+Camera::Camera() {
+    worldLoc.x = 127;
+    worldLoc.y = 127;
+    tileLoc.x = 0.5f;
+    tileLoc.y = 0.5f;
+}
 void Camera::setWorldLoc(sf::Vector2i newWorldLoc) { 
     worldLoc = newWorldLoc;
 }
@@ -60,3 +65,6 @@ sf::Vector2f Camera::getTileLoc() {
 sf::Vector2f Camera::getWinPos() { 
     return windowPosition;
 }
+
+
+

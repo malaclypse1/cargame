@@ -45,8 +45,7 @@ int main(int, char const**)
     if (!groundTexture.loadFromFile(resourcePath() + "desert.png")) {
         return EXIT_FAILURE;
     }
-    Map map;
-    sf::Sprite tile(groundTexture);
+    Map map(groundTexture);
     
     // Create a player car
     sf::Texture playerTexture;
@@ -137,14 +136,14 @@ int main(int, char const**)
         camera.setTileLoc(playerCar.getTileLoc());
         camera.setWorldLoc(playerCar.getWorldLoc());
         
-        // Draw map
-        map.draw(window,camera);
         
         // Clear screen
         window.clear();
+        
+        // Draw map
+        map.draw(window,camera);
 
         // Draw the sprite
-        window.draw(tile);
         playerCar.updateLocation();
         playerCar.draw(window);
 
