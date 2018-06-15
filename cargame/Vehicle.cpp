@@ -36,9 +36,14 @@ void Vehicle::accelerate(float acceleration) {
     //acceleration applied in direction of heading;
     sf::Vector2f accVector2f;
     //find directional components of acceleration
-    accVector2f.x = cos(getHeading()) * acceleration;
-    accVector2f.y = sin(getHeading()) * acceleration;
+    accVector2f.x = sin(getHeading()*degreesToRadians) * acceleration;
+    accVector2f.y = -cos(getHeading()*degreesToRadians) * acceleration;
     changeVelocity(accVector2f);
 }
 
-Vehicle::Vehicle(const sf::Texture &entitySprite): MovingEntity(entitySprite) {}
+Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) {
+    sf::Vector2f centerOfTile(0.5f, 0.5f);
+    sf::Vector2i centerOfWorld(127, 127);
+    setTileLoc(centerOfTile);
+    setWorldLoc(centerOfWorld);
+}

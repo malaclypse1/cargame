@@ -22,7 +22,7 @@ private:
     sf::Sprite tile;
     
 public:
-    Map(sf::Texture texture);
+    Map(sf::Texture& texture);
     //return appropriate map tile index
     u_short getTile(sf::Vector2i loc);
     

@@ -28,7 +28,7 @@
 int main(int, char const**)
 {
     float turnRate = 0.1f; //temporary!
-    float accel = 0.001f;
+    float accel = 0.0001f;
     
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML window");
@@ -40,7 +40,7 @@ int main(int, char const**)
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-    // Load a sprite to display
+    // Load a ground texture
     sf::Texture groundTexture;
     if (!groundTexture.loadFromFile(resourcePath() + "desert.png")) {
         return EXIT_FAILURE;
@@ -139,6 +139,12 @@ int main(int, char const**)
         
         // Clear screen
         window.clear();
+        
+        //testing textures
+//        sf::Sprite test1(playerTexture), test2(groundTexture);
+//        window.draw(test2);
+//        window.draw(test1);
+//        window.display();
         
         // Draw map
         map.draw(window,camera);

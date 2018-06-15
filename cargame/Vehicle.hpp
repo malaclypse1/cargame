@@ -27,7 +27,7 @@ class Vehicle : public MovingEntity
         //=============================================
         //constructors
         Vehicle();
-        Vehicle(const sf::Texture& entitySprite);
+        Vehicle(const sf::Texture& entityTexture);
     
         void turnLeft(float turnDegrees);
         void turnRight(float turnDegrees);

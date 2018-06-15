@@ -24,7 +24,7 @@ sf::Vector2f MovingEntity::getVelocity() {
     return velocity;
 }
 
-MovingEntity::MovingEntity(const sf::Texture &entitySprite): Entity(entitySprite) {}
+MovingEntity::MovingEntity(const sf::Texture &entityTexture): Entity(entityTexture) {}
 
 void MovingEntity::updateLocation() { 
     changeTileLoc(velocity);

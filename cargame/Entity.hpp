@@ -29,7 +29,7 @@ public:
     //=============================================
     //constructors
     Entity();
-    Entity(const sf::Texture& entitySprite);
+    Entity(const sf::Texture& entityTexture);
     
     //=============================================
     //mutators

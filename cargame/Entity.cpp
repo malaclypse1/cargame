@@ -14,9 +14,9 @@
 void Entity::init() {
     
 }
-Entity::Entity(const sf::Texture& entitySprite) {
+Entity::Entity(const sf::Texture& entityTexture) {
     Entity();
-    mSprite.setTexture(entitySprite);
+    mSprite.setTexture(entityTexture);
     //origin set to center, but consider using center of mass or center of rear axle
     mSprite.setOrigin(mSprite.getLocalBounds().width/2,mSprite.getLocalBounds().height/2);
     mSprite.setScale(sf::Vector2f(0.2f,0.2f));

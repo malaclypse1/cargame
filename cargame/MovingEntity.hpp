@@ -22,7 +22,7 @@ public:
     //=============================================
     //constructors
     MovingEntity();
-    MovingEntity(const sf::Texture& entitySprite);
+    MovingEntity(const sf::Texture& entityTexture);
     
     sf::Vector2f getVelocity();
     void setVelocity(sf::Vector2f newVelocity);

@@ -13,5 +13,6 @@
 #include <SFML/Graphics.hpp>
 
 sf::Vector2f normalizeV2f(sf::Vector2f inputVector);
+const float degreesToRadians = 3.14159265358979323846f/180.0f;
 
 #endif /* carMath_h */
