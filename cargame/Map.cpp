@@ -42,13 +42,13 @@ void Map::draw(sf::RenderWindow &win, Camera camera) {
     sf::Vector2f topLeft, worldOffset;
     sf::Vector2i tlWorldOffset, brWorldOffset;
 
-    topLeft.x = WINDOW_WIDTH/2 - (WINDOW_WIDTH/512 + camera.getTileLoc().x) * 256.0f;
-    topLeft.y = WINDOW_HEIGHT/2 - (WINDOW_HEIGHT/512 + camera.getTileLoc().y) * 256.0f;
+    topLeft.x = WINDOW_WIDTH/2 - (WINDOW_WIDTH/512 + camera.getTileLoc().x + 1) * 256.0f;
+    topLeft.y = WINDOW_HEIGHT/2 - (WINDOW_HEIGHT/512 + camera.getTileLoc().y + 1) * 256.0f;
 
     tlWorldOffset.x = camera.getWorldLoc().x - (WINDOW_WIDTH/2 - (int) topLeft.x)/256;
     tlWorldOffset.y = camera.getWorldLoc().y - (WINDOW_HEIGHT/2 - (int) topLeft.y)/256;
-    brWorldOffset.x = (WINDOW_WIDTH+256)/256;
-    brWorldOffset.y = (WINDOW_HEIGHT+256)/256;
+    brWorldOffset.x = (WINDOW_WIDTH- (int) topLeft.x)/256+2;
+    brWorldOffset.y = (WINDOW_HEIGHT- (int) topLeft.y)/256+2;
 //    brWorldOffset += tlWorldOffset;
 
 //    for (int x = tlWorldOffset.x;x<brWorldOffset.x;x++)

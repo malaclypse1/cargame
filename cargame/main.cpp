@@ -27,7 +27,7 @@
 
 int main(int, char const**)
 {
-    float turnRate = 0.1f; //temporary!
+    float turnRate = 0.3f; //temporary!
     float accel = 0.0001f;
     
     // Create the main window
@@ -69,13 +69,13 @@ int main(int, char const**)
     text.setColor(sf::Color::Black);
 
     // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
-        return EXIT_FAILURE;
-    }
+//    sf::Music music;
+//    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
+//        return EXIT_FAILURE;
+//    }
 
     // Play the music
-    music.play();
+//    music.play();
 
     // Start the game loop
     while (window.isOpen())

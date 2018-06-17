@@ -23,16 +23,22 @@ class Vehicle : public MovingEntity
 {
     //std::vector<Component> components;
     //others
-    public:
-        //=============================================
-        //constructors
-        Vehicle();
-        Vehicle(const sf::Texture& entityTexture);
+public:
+    //=============================================
+    //constructors
+    Vehicle();
+    Vehicle(const sf::Texture& entityTexture);
     
-        void turnLeft(float turnDegrees);
-        void turnRight(float turnDegrees);
-        void brake(float brakeForce);
-        void accelerate(float acceleration);
+    void turnLeft(float turnDegrees);
+    void turnRight(float turnDegrees);
+    void brake(float brakeForce);
+    void accelerate(float acceleration);
+    
+private:
+    float baseAcceleration;
+    float baseBrakeForce;
+    float baseTurnRate;
+    float wheel;            //relative direction of wheels to heading
 };
 
 
