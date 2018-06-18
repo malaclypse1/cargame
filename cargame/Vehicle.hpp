@@ -17,7 +17,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-const float MAX_WHEEL = 0.3f;
+const float MAX_WHEEL = 30.0f;
 
 class Component;
 
@@ -38,12 +38,14 @@ public:
     void accelerate(float acceleration);
     void updateLocation();
     float getWheel();
+    float getWheelBase();
     
 private:
     float baseAcceleration;
     float baseBrakeForce;
     float baseTurnRate;
     float wheel;            //relative direction of wheels to heading
+    float wheelBase;        //should be roughly length of car/tile size
 };
 
 

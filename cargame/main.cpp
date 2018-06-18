@@ -27,7 +27,7 @@
 
 int main(int, char const**)
 {
-    float turnRate = 0.03f; //temporary!
+    float turnRate = 0.3f; //temporary!
     float accel = 0.0001f;
     
     // Create the main window
@@ -102,10 +102,6 @@ int main(int, char const**)
         }
         //ship control
         if (true /*playerCar.getState() == SS_GOOD*/) {
-            //poll joystick
-//            joyXpos = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-//            joyYpos = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
-            
             
             //turns
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -151,7 +147,8 @@ int main(int, char const**)
         sf::Vector2f vel = playerCar.getVelocity();
         sf::Vector2f tile = playerCar.getTileLoc();
         sf::Vector2i world = playerCar.getWorldLoc();
-        ss << "heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y;
+        ss << "wheelBase: " << playerCar.getWheelBase();
+        ss << " heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y;
         ss << ") wheel: " << playerCar.getWheel();
         ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
         std::string s(ss.str());

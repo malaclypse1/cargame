@@ -56,17 +56,22 @@ float Vehicle::getWheel() {
     return wheel;
 }
 
+float Vehicle::getWheelBase() {
+    return wheelBase;
+}
+
 Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) {
     sf::Vector2f centerOfTile(0.5f, 0.5f);
     sf::Vector2i centerOfWorld(127, 127);
     setTileLoc(centerOfTile);
     setWorldLoc(centerOfWorld);
+    wheelBase = Entity::mSprite.getLocalBounds().height * Entity::mSprite.getScale().y / 256.0f;
 }
 
 void Vehicle::updateLocation() {
     //need to turn car some ammount depending on wheel value
     //figure car should turn 'wheel' degrees in one car length for small values of wheel
-    Entity::changeHeading(wheel);
+    Entity::changeHeading(wheel*magnitude(getVelocity()/getWheelBase()));
     
     //need to update velocity to be in direction of heading (unless skidding)
     //new velocity = projection of old velocity onto heading
