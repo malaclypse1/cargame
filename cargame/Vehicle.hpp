@@ -17,6 +17,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+const float MAX_WHEEL = 0.3f;
+
 class Component;
 
 class Vehicle : public MovingEntity
@@ -31,8 +33,11 @@ public:
     
     void turnLeft(float turnDegrees);
     void turnRight(float turnDegrees);
+    void straighten();
     void brake(float brakeForce);
     void accelerate(float acceleration);
+    void updateLocation();
+    float getWheel();
     
 private:
     float baseAcceleration;

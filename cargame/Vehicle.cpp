@@ -19,11 +19,22 @@
 // probably should reduce effect of inputs at high speed to make sure steering is still possible
 
 void Vehicle::turnLeft(float turnDegrees) {
-    changeHeading(-turnDegrees);
+    wheel -= turnDegrees;
+    //max wheel value +/- 30 degrees
+    if (wheel <= -MAX_WHEEL) wheel = -MAX_WHEEL;
 }
 
 void Vehicle::turnRight(float turnDegrees) {
-    changeHeading(turnDegrees);
+    wheel += turnDegrees;
+    //max wheel value +/- 30 degrees
+    if (wheel >= MAX_WHEEL) wheel = MAX_WHEEL;
+}
+
+void Vehicle::straighten() {
+    //wheel unwinds, moving closer to 0.0f
+    //TODO: come up with better function for this
+    wheel /= 1.5f;
+    if (wheel <= MAX_WHEEL/10.0f) wheel = 0.0f;
 }
 
 void Vehicle::brake(float brakeForce) {
@@ -41,9 +52,31 @@ void Vehicle::accelerate(float acceleration) {
     changeVelocity(accVector2f);
 }
 
+float Vehicle::getWheel() {
+    return wheel;
+}
+
 Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) {
     sf::Vector2f centerOfTile(0.5f, 0.5f);
     sf::Vector2i centerOfWorld(127, 127);
     setTileLoc(centerOfTile);
     setWorldLoc(centerOfWorld);
 }
+
+void Vehicle::updateLocation() {
+    //need to turn car some ammount depending on wheel value
+    //figure car should turn 'wheel' degrees in one car length for small values of wheel
+    Entity::changeHeading(wheel);
+    
+    //need to update velocity to be in direction of heading (unless skidding)
+    //new velocity = projection of old velocity onto heading
+    sf::Vector2f newVelocity, headingUnitVector;
+    headingUnitVector = unitVector(getHeading());
+    newVelocity = dotProduct(getVelocity(), headingUnitVector) * headingUnitVector;
+    
+    MovingEntity::setVelocity(newVelocity);
+    
+    //finally call super's updateLocation function
+    MovingEntity::updateLocation();
+}
+

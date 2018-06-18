@@ -27,7 +27,7 @@
 
 int main(int, char const**)
 {
-    float turnRate = 0.3f; //temporary!
+    float turnRate = 0.03f; //temporary!
     float accel = 0.0001f;
     
     // Create the main window
@@ -107,29 +107,22 @@ int main(int, char const**)
 //            joyYpos = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
             
             
-            //left turns
+            //turns
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                 playerCar.turnLeft(turnRate);
-//            else if (joyXpos < -5) //if joystick left of deadzone
-//                ship.rotateLeft((-joyXpos-5)*gShipAgility/60); //joysticks can turn faster than keys
-            
-            //right turns
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
                 playerCar.turnRight(turnRate);
-//            else if (joyXpos > 5) //if joystick right of deadzone
-//                ship.rotateRight((joyXpos-5)*gShipAgility/60);
+            else
+                playerCar.straighten();
+
             
             //thrust
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
                 playerCar.accelerate(accel);
-//            else if (joyYpos < -5) //if joystick up from deadzone
-//                ship.applyThrust((-joyYpos-5)*gThrust/95);
             
             //brake
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                 playerCar.brake(accel);
-//            else if (joyYpos > 5) //if joystick is down from deadzone
-//                ship.rotateRetro((joyYpos-5)*gShipAgility/60);
         }
         
         // center camera on player car
@@ -158,7 +151,8 @@ int main(int, char const**)
         sf::Vector2f vel = playerCar.getVelocity();
         sf::Vector2f tile = playerCar.getTileLoc();
         sf::Vector2i world = playerCar.getWorldLoc();
-        ss << "heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y << ")";
+        ss << "heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y;
+        ss << ") wheel: " << playerCar.getWheel();
         ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
         std::string s(ss.str());
         text.setString(s);

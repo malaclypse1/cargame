@@ -15,4 +15,12 @@
 sf::Vector2f normalizeV2f(sf::Vector2f inputVector);
 const float degreesToRadians = 3.14159265358979323846f/180.0f;
 
+//Polar here meaning north at 0 degrees, angle going clockwise
+float magnitude(sf::Vector2f inputVector);
+float magSqr(sf::Vector2f inputVector);
+float direction(sf::Vector2f inputBector);
+float dotProduct(sf::Vector2f vector1, sf::Vector2f vector2);
+sf::Vector2f unitVector(float heading);
+sf::Vector2f unitVector(sf::Vector2f inputVector);
+
 #endif /* carMath_h */
