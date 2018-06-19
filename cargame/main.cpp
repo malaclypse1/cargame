@@ -105,7 +105,7 @@ int main(int, char const**)
         //ship control
         if (true /*playerCar.getState() == SS_GOOD*/) {
             
-            //turns
+            //turns TODO: cleanup and allow cording
             if (sf::Keyboard::isKeyPressed(player.left))
                 playerCar.turnLeft(turnRate);
             else if (sf::Keyboard::isKeyPressed(player.right))
