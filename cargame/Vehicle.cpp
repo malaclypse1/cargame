@@ -39,8 +39,14 @@ void Vehicle::straighten() {
 
 void Vehicle::brake(float brakeForce) {
     //braking applied in direction opposite to velocity
-    changeVelocity(normalizeV2f(-getVelocity())*brakeForce);
+    if (magnitude(getVelocity()) > brakeForce) {
+        changeVelocity(normalizeV2f(-getVelocity())*brakeForce);
+    }
+    else {
+        setVelocity(zeroVector);
+    }
     //need to make sure velocity set to 0 if brakeForce > current velocity
+    //TODO: figure out backing up
 }
 
 void Vehicle::accelerate(float acceleration) {

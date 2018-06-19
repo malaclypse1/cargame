@@ -14,6 +14,7 @@
 
 sf::Vector2f normalizeV2f(sf::Vector2f inputVector);
 const float degreesToRadians = 3.14159265358979323846f/180.0f;
+const sf::Vector2f zeroVector(0.0f, 0.0f);
 
 //Polar here meaning north at 0 degrees, angle going clockwise
 float magnitude(sf::Vector2f inputVector);
