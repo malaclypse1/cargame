@@ -24,6 +24,7 @@
 #include "Camera.hpp"
 #include "Config.hpp"
 #include "Map.hpp"
+#include "Controls.hpp"
 
 int main(int, char const**)
 {
@@ -53,6 +54,7 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     Vehicle playerCar(playerTexture);
+    Controls player;
     
     // Camera focus position (window center)
     // This might become a class
@@ -102,34 +104,27 @@ int main(int, char const**)
         }
         //ship control
         if (true /*playerCar.getState() == SS_GOOD*/) {
-            //poll joystick
-//            joyXpos = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-//            joyYpos = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
             
-            
-            //left turns
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            //turns
+            if (sf::Keyboard::isKeyPressed(player.left))
                 playerCar.turnLeft(turnRate);
-//            else if (joyXpos < -5) //if joystick left of deadzone
-//                ship.rotateLeft((-joyXpos-5)*gShipAgility/60); //joysticks can turn faster than keys
-            
-            //right turns
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            else if (sf::Keyboard::isKeyPressed(player.right))
                 playerCar.turnRight(turnRate);
-//            else if (joyXpos > 5) //if joystick right of deadzone
-//                ship.rotateRight((joyXpos-5)*gShipAgility/60);
+            else if (sf::Keyboard::isKeyPressed(player.hardLeft))
+                playerCar.turnLeft(turnRate*3.0f);
+            else if (sf::Keyboard::isKeyPressed(player.hardRight))
+                playerCar.turnRight(turnRate*3.0f);
+            else
+                playerCar.straighten();
+
             
             //thrust
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            if (sf::Keyboard::isKeyPressed(player.accelerate))
                 playerCar.accelerate(accel);
-//            else if (joyYpos < -5) //if joystick up from deadzone
-//                ship.applyThrust((-joyYpos-5)*gThrust/95);
             
             //brake
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            if (sf::Keyboard::isKeyPressed(player.brake))
                 playerCar.brake(accel);
-//            else if (joyYpos > 5) //if joystick is down from deadzone
-//                ship.rotateRetro((joyYpos-5)*gShipAgility/60);
         }
         
         // center camera on player car
@@ -158,7 +153,9 @@ int main(int, char const**)
         sf::Vector2f vel = playerCar.getVelocity();
         sf::Vector2f tile = playerCar.getTileLoc();
         sf::Vector2i world = playerCar.getWorldLoc();
-        ss << "heading: " << playerCar.getHeading() << "\nvelocity (x: " << vel.x << " y: " << vel.y << ")";
+        ss << "wheelBase: " << playerCar.getWheelBase();
+        ss << " heading: " << playerCar.getHeading() << "\nvelocity: " << magnitude(vel) * 256.0f;
+        ss << ") wheel: " << playerCar.getWheel();
         ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
         std::string s(ss.str());
         text.setString(s);
