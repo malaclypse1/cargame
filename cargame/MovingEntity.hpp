@@ -16,6 +16,17 @@
 
 class MovingEntity : public Entity
 {
+private:
     sf::Vector2f velocity;
+public:
+    //=============================================
+    //constructors
+    MovingEntity();
+    MovingEntity(const sf::Texture& entityTexture);
+    
+    sf::Vector2f getVelocity();
+    void setVelocity(sf::Vector2f newVelocity);
+    void changeVelocity(sf::Vector2f newVelocity);
+    void updateLocation();
 };
 #endif /* MovingEntity_h */

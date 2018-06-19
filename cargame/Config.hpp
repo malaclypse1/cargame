@@ -10,5 +10,7 @@
 #define Config_h
 
 #define TICS_PER_HOUR 180000
+#define WINDOW_WIDTH 1600
+#define WINDOW_HEIGHT 1200
 
 #endif /* Config_h */
