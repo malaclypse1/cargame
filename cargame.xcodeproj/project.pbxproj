@@ -22,6 +22,8 @@
 		053D181B20D067A300B70272 /* desert.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D181A20D067A300B70272 /* desert.png */; };
 		053D181E20D06BAF00B70272 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181C20D06BAF00B70272 /* Camera.cpp */; };
 		053D182120D96A4000B70272 /* Controls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053D181F20D96A4000B70272 /* Controls.cpp */; };
+		056167A6220252320013B1B2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 056167A5220252320013B1B2 /* README.md */; };
+		056167A8220258650013B1B2 /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 056167A7220258650013B1B2 /* screenshot1.png */; };
 		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		053D181D20D06BAF00B70272 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		053D181F20D96A4000B70272 /* Controls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controls.cpp; sourceTree = "<group>"; };
 		053D182020D96A4000B70272 /* Controls.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Controls.hpp; sourceTree = "<group>"; };
+		056167A5220252320013B1B2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		056167A7220258650013B1B2 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		051CDFFC1D0FE99100AEA9CC = {
 			isa = PBXGroup;
 			children = (
+				056167A7220258650013B1B2 /* screenshot1.png */,
+				056167A5220252320013B1B2 /* README.md */,
 				051CE0081D0FE99100AEA9CC /* cargame */,
 				051CE0071D0FE99100AEA9CC /* Products */,
 			);
@@ -191,8 +197,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				053D181B20D067A300B70272 /* desert.png in Resources */,
+				056167A8220258650013B1B2 /* screenshot1.png in Resources */,
 				051CE0181D0FE99100AEA9CC /* icon.png in Resources */,
 				051CE0161D0FE99100AEA9CC /* sansation.ttf in Resources */,
+				056167A6220252320013B1B2 /* README.md in Resources */,
 				053D181220C9CB8100B70272 /* car.png in Resources */,
 				051CE0141D0FE99100AEA9CC /* nice_music.ogg in Resources */,
 				051CE0121D0FE99100AEA9CC /* cute_image.jpg in Resources */,
@@ -241,6 +249,7 @@
 		051CE0191D0FE99100AEA9CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -314,6 +323,7 @@
 		051CE01A1D0FE99100AEA9CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
