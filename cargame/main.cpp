@@ -29,7 +29,7 @@
 int main(int, char const**)
 {
     float turnRate = 0.3f; //temporary!
-    float accel = 0.0001f;
+    float accel = 0.01f;
     
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML window");
@@ -68,7 +68,7 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Text text("Hello SFML", font, 50);
-    text.setColor(sf::Color::Black);
+    text.setColor(sf::Color::Red);
 
     // Load a music to play
 //    sf::Music music;

@@ -18,6 +18,7 @@ class MovingEntity : public Entity
 {
 private:
     sf::Vector2f velocity;
+    float Cdrag, Crr, mass;
 public:
     //=============================================
     //constructors
@@ -28,5 +29,8 @@ public:
     void setVelocity(sf::Vector2f newVelocity);
     void changeVelocity(sf::Vector2f newVelocity);
     void updateLocation();
+    float getCdrag();
+    float getCrr();
+    float getMass();
 };
 #endif /* MovingEntity_h */

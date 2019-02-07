@@ -17,3 +17,21 @@ Very early in development of a topdown 2D driving simulator. You can drive a car
 
 ## What's next? ##
 Skidding. I'm not happy with modeling the car as a single entity, so I think I want to model each wheel (well, not rotation, but point of contact and direction of roll) so I can account for differing coefficients of friction for each wheel (varying with terrain and static rolling or dynamic skidding friction).
+
+### 1/29/19 Steering/skidding refactor plan ###
+* remove 'wheel' (front wheel turning angle)
+* add wheel component for each wheel of vehicle (4 for car)
+* each wheel tracks angle, position, relative to car
+* coefficient of friction and whether or not wheel is sticking or sliding needs to be tracked
+    * cof is dependent on material of tire and 'road' - but it may be easier to assume all tires are the same? or have a 'stickiness' variable on tires that multiplies by road cof. Maybe multiple stickiness by terrain (racing tires better on asphalt, snow tires on snow. ugh)
+    * wheels using static cof until they start sliding, then use dynamic until they stop sliding
+        * 'stop sliding' occurs when vehicle comes to a complete stop, but also if direction of travel ~= direction wheel is facing (or 180 to that). I need a term for direction wheel is facing. wheelDir. wheelPlane is wheelDir or wheelDir +180.
+* wheels should also be able to skid (for example) under high acceleration when car is moving slow (burning rubber) or when breaking and cornering. I might need to model wheel rotation for this.
+normal force η  = mG (+ aerodynamic downforce)
+friction force F = μη
+When wheels aren't pointing in direction of motion, and aren't skidding, when does the car turn and when does it skid?
+    Project car velocity onto wheelDir
+    
+### 2/4/19 better car physics ###
+http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
+

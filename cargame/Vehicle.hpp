@@ -44,8 +44,13 @@ private:
     float baseAcceleration;
     float baseBrakeForce;
     float baseTurnRate;
-    float wheel;            //relative direction of wheels to heading
+    float steeringWheel;            //relative direction of wheels to heading
     float wheelBase;        //should be roughly length of car/tile size
+    sf::Vector2f tractionForce(float engineForce);
+    sf::Vector2f brakingForce();
+    sf::Vector2f dragForce();
+    sf::Vector2f rollingResistanceForce();
+    sf::Vector2f longitudinalForce(float engineForce);
 };
 
 

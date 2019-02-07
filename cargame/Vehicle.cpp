@@ -19,28 +19,28 @@
 // probably should reduce effect of inputs at high speed to make sure steering is still possible
 
 void Vehicle::turnLeft(float turnDegrees) {
-    wheel -= turnDegrees;
+    steeringWheel -= turnDegrees;
     //max wheel value +/- 30 degrees
-    if (wheel <= -MAX_WHEEL) wheel = -MAX_WHEEL;
+    if (steeringWheel <= -MAX_WHEEL) steeringWheel = -MAX_WHEEL;
 }
 
 void Vehicle::turnRight(float turnDegrees) {
-    wheel += turnDegrees;
+    steeringWheel += turnDegrees;
     //max wheel value +/- 30 degrees
-    if (wheel >= MAX_WHEEL) wheel = MAX_WHEEL;
+    if (steeringWheel >= MAX_WHEEL) steeringWheel = MAX_WHEEL;
 }
 
 void Vehicle::straighten() {
     //wheel unwinds, moving closer to 0.0f
     //TODO: come up with better function for this
-    wheel /= 1.5f;
-    if (wheel <= MAX_WHEEL/10.0f) wheel = 0.0f;
+    steeringWheel /= 1.5f;
+    if (steeringWheel <= MAX_WHEEL/10.0f) steeringWheel = 0.0f;
 }
 
 void Vehicle::brake(float brakeForce) {
     //braking applied in direction opposite to velocity
-    if (magnitude(getVelocity()) > brakeForce) {
-        changeVelocity(normalizeV2f(-getVelocity())*brakeForce);
+    if (magnitude(getVelocity()) > magnitude(tractionForce(-brakeForce)/getMass())) {
+        changeVelocity(longitudinalForce(-brakeForce)/getMass());
     }
     else {
         setVelocity(zeroVector);
@@ -49,17 +49,28 @@ void Vehicle::brake(float brakeForce) {
     //TODO: figure out backing up
 }
 
+sf::Vector2f Vehicle::tractionForce(float engineForce) {
+    return unitVector(getHeading()) * engineForce;
+}
+
+sf::Vector2f Vehicle::dragForce() {
+    return - getCdrag() * getVelocity() * magnitude(getVelocity());
+}
+
+sf::Vector2f Vehicle::rollingResistanceForce() {
+    return - getCrr() * getVelocity();
+}
+
+sf::Vector2f Vehicle::longitudinalForce(float engineForce) {
+    return tractionForce(engineForce) + dragForce() + rollingResistanceForce();
+}
+
 void Vehicle::accelerate(float acceleration) {
-    //acceleration applied in direction of heading;
-    sf::Vector2f accVector2f;
-    //find directional components of acceleration
-    accVector2f.x = sin(getHeading()*degreesToRadians) * acceleration;
-    accVector2f.y = -cos(getHeading()*degreesToRadians) * acceleration;
-    changeVelocity(accVector2f);
+    changeVelocity(longitudinalForce(acceleration)/getMass());
 }
 
 float Vehicle::getWheel() {
-    return wheel;
+    return steeringWheel;
 }
 
 float Vehicle::getWheelBase() {
@@ -75,9 +86,9 @@ Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) 
 }
 
 void Vehicle::updateLocation() {
-    //need to turn car some ammount depending on wheel value
+    //need to turn car some amount depending on wheel value
     //figure car should turn 'wheel' degrees in one car length for small values of wheel
-    Entity::changeHeading(wheel*magnitude(getVelocity()/getWheelBase()));
+    Entity::changeHeading(steeringWheel*magnitude(getVelocity()/getWheelBase()));
     
     //need to update velocity to be in direction of heading (unless skidding)
     //new velocity = projection of old velocity onto heading
