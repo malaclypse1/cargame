@@ -15,7 +15,7 @@
 class Controls {
 public:
     Controls();
-    sf::Keyboard::Key left, right, hardLeft, hardRight, accelerate, brake;
+    sf::Keyboard::Key left, right, hardLeft, hardRight, throttleUp, throttleDown, brake;
 };
     
 #endif /* Controls_hpp */

@@ -13,6 +13,7 @@ Controls::Controls() {
     right = sf::Keyboard::E;
     hardLeft = sf::Keyboard::A;
     hardRight = sf::Keyboard::D;
-    accelerate = sf::Keyboard::W;
-    brake = sf::Keyboard::S;
+    throttleUp = sf::Keyboard::W;
+    throttleDown = sf::Keyboard::S;
+    brake = sf::Keyboard::X;
 }

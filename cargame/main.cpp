@@ -29,7 +29,7 @@
 int main(int, char const**)
 {
     float turnRate = 0.3f; //temporary!
-    float accel = 0.01f;
+    float accel = 0.005f;
     
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML window");
@@ -119,8 +119,10 @@ int main(int, char const**)
 
             
             //thrust
-            if (sf::Keyboard::isKeyPressed(player.accelerate))
-                playerCar.accelerate(accel);
+            if (sf::Keyboard::isKeyPressed(player.throttleUp))
+                playerCar.changeThrottle(accel);
+            else if (sf::Keyboard::isKeyPressed(player.throttleDown))
+                playerCar.changeThrottle(-accel);
             
             //brake
             if (sf::Keyboard::isKeyPressed(player.brake))
@@ -153,6 +155,7 @@ int main(int, char const**)
         sf::Vector2f vel = playerCar.getVelocity();
         sf::Vector2f tile = playerCar.getTileLoc();
         sf::Vector2i world = playerCar.getWorldLoc();
+        ss << "throttle: " << playerCar.getThrottle();
         ss << "wheelBase: " << playerCar.getWheelBase();
         ss << " heading: " << playerCar.getHeading() << "\nvelocity: " << magnitude(vel) * 256.0f;
         ss << ") wheel: " << playerCar.getWheel();

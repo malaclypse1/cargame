@@ -35,7 +35,8 @@ public:
     void turnRight(float turnDegrees);
     void straighten();
     void brake(float brakeForce);
-    void accelerate(float acceleration);
+    void changeThrottle(float deltaThrottle);
+    float getThrottle();
     void updateLocation();
     float getWheel();
     float getWheelBase();
@@ -46,11 +47,13 @@ private:
     float baseTurnRate;
     float steeringWheel;            //relative direction of wheels to heading
     float wheelBase;        //should be roughly length of car/tile size
-    sf::Vector2f tractionForce(float engineForce);
+    float throttle;         //0-1, fraction of engine force
+    float engineForce;      //in Newtons
+    sf::Vector2f tractionForce();
     sf::Vector2f brakingForce();
     sf::Vector2f dragForce();
     sf::Vector2f rollingResistanceForce();
-    sf::Vector2f longitudinalForce(float engineForce);
+    sf::Vector2f longitudinalForce();
 };
 
 

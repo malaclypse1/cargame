@@ -27,11 +27,11 @@ sf::Vector2f MovingEntity::getVelocity() {
 MovingEntity::MovingEntity(const sf::Texture &entityTexture): Entity(entityTexture) {
     Cdrag = 0.4257f;
     Crr = 12.8f;
-    mass = 1;
+    mass = 1000.0f;
 }
 
 void MovingEntity::updateLocation() { 
-    changeTileLoc(velocity);
+    changeTileLoc(getVelocity());
 }
 
 float MovingEntity::getCdrag() { 

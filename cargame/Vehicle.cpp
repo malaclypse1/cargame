@@ -18,6 +18,17 @@
 // moving really fast, skid!
 // probably should reduce effect of inputs at high speed to make sure steering is still possible
 
+// physics cribbed from:
+// http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
+// variables needed:
+//  mass
+//  center of mass location
+//  wheel locations
+//  weight on each wheel
+//  engine force
+//  throttle
+//  braking force
+
 void Vehicle::turnLeft(float turnDegrees) {
     steeringWheel -= turnDegrees;
     //max wheel value +/- 30 degrees
@@ -39,18 +50,18 @@ void Vehicle::straighten() {
 
 void Vehicle::brake(float brakeForce) {
     //braking applied in direction opposite to velocity
-    if (magnitude(getVelocity()) > magnitude(tractionForce(-brakeForce)/getMass())) {
-        changeVelocity(longitudinalForce(-brakeForce)/getMass());
-    }
-    else {
-        setVelocity(zeroVector);
-    }
+//    if (magnitude(getVelocity()) > magnitude(tractionForce(-brakeForce)/getMass())) {
+//        changeVelocity(longitudinalForce(-brakeForce)/getMass());
+//    }
+//    else {
+//        setVelocity(zeroVector);
+//    }
     //need to make sure velocity set to 0 if brakeForce > current velocity
     //TODO: figure out backing up
 }
 
-sf::Vector2f Vehicle::tractionForce(float engineForce) {
-    return unitVector(getHeading()) * engineForce;
+sf::Vector2f Vehicle::tractionForce() {
+    return unitVector(getHeading()) * engineForce * throttle;
 }
 
 sf::Vector2f Vehicle::dragForce() {
@@ -61,12 +72,18 @@ sf::Vector2f Vehicle::rollingResistanceForce() {
     return - getCrr() * getVelocity();
 }
 
-sf::Vector2f Vehicle::longitudinalForce(float engineForce) {
-    return tractionForce(engineForce) + dragForce() + rollingResistanceForce();
+sf::Vector2f Vehicle::longitudinalForce() {
+    return tractionForce() + dragForce() + rollingResistanceForce();
 }
 
-void Vehicle::accelerate(float acceleration) {
-    changeVelocity(longitudinalForce(acceleration)/getMass());
+void Vehicle::changeThrottle(float deltaThrottle) {
+    throttle += deltaThrottle;
+    if (throttle < 0.0f) throttle = 0.0f;  // maybe make minimum negative for reversing?
+    if (throttle > 1.0f) throttle = 1.0f;
+}
+
+float Vehicle::getThrottle() {
+    return throttle;
 }
 
 float Vehicle::getWheel() {
@@ -83,6 +100,7 @@ Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) 
     setTileLoc(centerOfTile);
     setWorldLoc(centerOfWorld);
     wheelBase = Entity::mSprite.getLocalBounds().height * Entity::mSprite.getScale().y / 256.0f;
+    engineForce = 4.0f;
 }
 
 void Vehicle::updateLocation() {
@@ -92,11 +110,11 @@ void Vehicle::updateLocation() {
     
     //need to update velocity to be in direction of heading (unless skidding)
     //new velocity = projection of old velocity onto heading
-    sf::Vector2f newVelocity, headingUnitVector;
-    headingUnitVector = unitVector(getHeading());
-    newVelocity = dotProduct(getVelocity(), headingUnitVector) * headingUnitVector;
+//    sf::Vector2f newVelocity, headingUnitVector;
+//    headingUnitVector = unitVector(getHeading());
+//    newVelocity = dotProduct(getVelocity(), headingUnitVector) * headingUnitVector ;
     
-    MovingEntity::setVelocity(newVelocity);
+    MovingEntity::changeVelocity(longitudinalForce()/getMass());
     
     //finally call super's updateLocation function
     MovingEntity::updateLocation();

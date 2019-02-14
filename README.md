@@ -35,3 +35,10 @@ When wheels aren't pointing in direction of motion, and aren't skidding, when do
 ### 2/4/19 better car physics ###
 http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
 
+### 2/14/19 better car physics II ###
+Real physics from experimental data is probably better than trying to figure out theoretical physics from scratch. The above link does most of the work, and shows that I was missing things like slip, so a rewrite is in order. That link puts the car's weight on front or back axle, but I think a per-wheel weight is better - car cornering or sliding sideways will lean to one side afterall.
+
+I need to re-think controls too: I had been thinking 'w' would be accelerate and 's' brake, and throttle would remain constant with neither of those pressed, but throttle doesn't remain contant as cornering slowed the car down. If 'w' and 's' control throttle, I'll need an additional brake key ('x'?). Hitting the brake means taking your foot off the throttle, so if you tap the brakes throttle would be zeroed, but often a driver will want to return the throttle to approximately the same position after tapping the brakes. Ideas to accomplish that:
+* measure how long brakes are applied: if short duration, return throttle to previous amount when brakes are released
+* better: reverse engineer amount of throttle to maintain speed after braking and set throttle to that amount.
+* maybe both? if braking over threshold time, zero throttle, otherwise set throttle to match current speed?
