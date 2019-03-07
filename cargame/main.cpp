@@ -68,7 +68,8 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Text text("Hello SFML", font, 50);
-    text.setColor(sf::Color::Red);
+    sf::Color color(0,0,128);
+    text.setColor(color);
 
     // Load a music to play
 //    sf::Music music;
@@ -78,6 +79,10 @@ int main(int, char const**)
 
     // Play the music
 //    music.play();
+    
+    // initialize timing clock
+    sf::Clock clock;
+    sf::Time lastFrameTime;
 
     // Start the game loop
     while (window.isOpen())
@@ -125,8 +130,12 @@ int main(int, char const**)
                 playerCar.changeThrottle(-accel);
             
             //brake
-            if (sf::Keyboard::isKeyPressed(player.brake))
-                playerCar.brake(accel);
+            if (sf::Keyboard::isKeyPressed(player.brake)) {
+                playerCar.braking = true;
+                playerCar.setThrottle(playerCar.maintenanceThrottle());
+                //I'd rather only set the throttle when braking is done...
+            }
+            else playerCar.braking = false;
         }
         
         // center camera on player car
@@ -136,6 +145,7 @@ int main(int, char const**)
         
         // Clear screen
         window.clear();
+        lastFrameTime = clock.restart();
         
         //testing textures
 //        sf::Sprite test1(playerTexture), test2(groundTexture);
@@ -147,18 +157,20 @@ int main(int, char const**)
         map.draw(window,camera);
 
         // Draw the sprite
-        playerCar.updateLocation();
+        playerCar.updateLocation(lastFrameTime);
         playerCar.draw(window);
 
-        // Draw the string
+        // Draw the string - temp fill in for UI/debugging
         std::ostringstream ss;
         sf::Vector2f vel = playerCar.getVelocity();
         sf::Vector2f tile = playerCar.getTileLoc();
         sf::Vector2i world = playerCar.getWorldLoc();
         ss << "throttle: " << playerCar.getThrottle();
-        ss << "wheelBase: " << playerCar.getWheelBase();
+        ss << " speed: " << mph(magnitude(vel)) << " mph";
+        ss << " fps: " << 1.0f/lastFrameTime.asSeconds();
+        ss << "\nwheelBase: " << playerCar.getWheelBase();
         ss << " heading: " << playerCar.getHeading() << "\nvelocity: " << magnitude(vel) * 256.0f;
-        ss << ") wheel: " << playerCar.getWheel();
+        ss << " wheel: " << playerCar.getWheel();
         ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
         std::string s(ss.str());
         text.setString(s);

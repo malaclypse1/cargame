@@ -110,8 +110,8 @@
 				051CE00B1D0FE99100AEA9CC /* ResourcePath.mm */,
 				051CE00D1D0FE99100AEA9CC /* ResourcePath.hpp */,
 				051CE00E1D0FE99100AEA9CC /* main.cpp */,
-				051CE01E1D10BEB600AEA9CC /* Entity.cpp */,
 				051CE01F1D10BEB600AEA9CC /* Entity.hpp */,
+				051CE01E1D10BEB600AEA9CC /* Entity.cpp */,
 				051CE0101D0FE99100AEA9CC /* Resources */,
 				051CE0091D0FE99100AEA9CC /* Supporting Files */,
 			);

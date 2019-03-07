@@ -21,7 +21,9 @@ float magnitude(sf::Vector2f inputVector);
 float magSqr(sf::Vector2f inputVector);
 float direction(sf::Vector2f inputBector);
 float dotProduct(sf::Vector2f vector1, sf::Vector2f vector2);
+float mph(float mps);
 sf::Vector2f unitVector(float heading);
 sf::Vector2f unitVector(sf::Vector2f inputVector);
+sf::Vector2f proj(sf::Vector2f vector1, sf::Vector2f vector2); //projection of vector1 onto vector2
 
 #endif /* carMath_h */

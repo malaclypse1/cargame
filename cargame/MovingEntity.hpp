@@ -28,7 +28,7 @@ public:
     sf::Vector2f getVelocity();
     void setVelocity(sf::Vector2f newVelocity);
     void changeVelocity(sf::Vector2f newVelocity);
-    void updateLocation();
+    void updateLocation(sf::Time lastFrameTime);
     float getCdrag();
     float getCrr();
     float getMass();

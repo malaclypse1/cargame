@@ -48,16 +48,19 @@ void Vehicle::straighten() {
     if (steeringWheel <= MAX_WHEEL/10.0f) steeringWheel = 0.0f;
 }
 
-void Vehicle::brake(float brakeForce) {
-    //braking applied in direction opposite to velocity
-//    if (magnitude(getVelocity()) > magnitude(tractionForce(-brakeForce)/getMass())) {
-//        changeVelocity(longitudinalForce(-brakeForce)/getMass());
-//    }
-//    else {
-//        setVelocity(zeroVector);
-//    }
-    //need to make sure velocity set to 0 if brakeForce > current velocity
-    //TODO: figure out backing up
+sf::Vector2f Vehicle::brakingForce() {
+    // naive solution puts braking in direction opposite heading
+    // this causes: reversing after stop, inappropriate direction if moving in reverse
+    // return - unitVector(getHeading()) * brakeForce;
+    
+    // instead, project velocity to heading (and reverse)
+    sf::Vector2f velocityBrakingVector = - proj(getVelocity(), unitVector(getHeading()));
+    
+    //that works for small magnitudes of velocity, but needs to be capped so we don't overbrake:
+    if (magnitude(velocityBrakingVector) > 1)
+        velocityBrakingVector = unitVector(velocityBrakingVector);
+                                                
+    return velocityBrakingVector * brakeForce;
 }
 
 sf::Vector2f Vehicle::tractionForce() {
@@ -70,16 +73,26 @@ sf::Vector2f Vehicle::dragForce() {
 
 sf::Vector2f Vehicle::rollingResistanceForce() {
     return - getCrr() * getVelocity();
+    // maybe this should only be in direction of heading? revisit when we do cornering
 }
 
 sf::Vector2f Vehicle::longitudinalForce() {
-    return tractionForce() + dragForce() + rollingResistanceForce();
+    return (braking ? brakingForce() : tractionForce()) + dragForce() + rollingResistanceForce();
+}
+
+float Vehicle::maintenanceThrottle() {
+    sf::Vector2f maintenanceForce = - proj(dragForce()+rollingResistanceForce(),unitVector(getHeading()));
+    return magnitude(maintenanceForce) / engineForce;
 }
 
 void Vehicle::changeThrottle(float deltaThrottle) {
     throttle += deltaThrottle;
     if (throttle < 0.0f) throttle = 0.0f;  // maybe make minimum negative for reversing?
     if (throttle > 1.0f) throttle = 1.0f;
+}
+
+void Vehicle::setThrottle(float newThrottle) {
+    throttle = newThrottle;
 }
 
 float Vehicle::getThrottle() {
@@ -100,13 +113,15 @@ Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) 
     setTileLoc(centerOfTile);
     setWorldLoc(centerOfWorld);
     wheelBase = Entity::mSprite.getLocalBounds().height * Entity::mSprite.getScale().y / 256.0f;
-    engineForce = 4.0f;
+    engineForce = 4000.0f;
+    braking = false;
+    brakeForce = 8000.0f;
 }
 
-void Vehicle::updateLocation() {
+void Vehicle::updateLocation(sf::Time lastFrameTime) {
     //need to turn car some amount depending on wheel value
     //figure car should turn 'wheel' degrees in one car length for small values of wheel
-    Entity::changeHeading(steeringWheel*magnitude(getVelocity()/getWheelBase()));
+    Entity::changeHeading(steeringWheel*magnitude(getVelocity()/getWheelBase())*lastFrameTime.asSeconds());
     
     //need to update velocity to be in direction of heading (unless skidding)
     //new velocity = projection of old velocity onto heading
@@ -114,9 +129,9 @@ void Vehicle::updateLocation() {
 //    headingUnitVector = unitVector(getHeading());
 //    newVelocity = dotProduct(getVelocity(), headingUnitVector) * headingUnitVector ;
     
-    MovingEntity::changeVelocity(longitudinalForce()/getMass());
+    MovingEntity::changeVelocity(longitudinalForce()/getMass()*lastFrameTime.asSeconds());
     
     //finally call super's updateLocation function
-    MovingEntity::updateLocation();
+    MovingEntity::updateLocation(lastFrameTime);
 }
 

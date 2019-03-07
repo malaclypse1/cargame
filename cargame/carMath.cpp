@@ -30,6 +30,10 @@ float dotProduct(sf::Vector2f vector1, sf::Vector2f vector2) {
     return vector1.x * vector2.x + vector1.y * vector2.y;
 }
 
+float mph(float mps) {
+    return mps * 2.23694f;
+}
+
 sf::Vector2f unitVector(float heading) {
     float angle = heading * degreesToRadians;
     sf::Vector2f returnVector;
@@ -40,4 +44,8 @@ sf::Vector2f unitVector(float heading) {
 
 sf::Vector2f unitVector(sf::Vector2f inputVector) {
     return normalizeV2f(inputVector);
+}
+
+sf::Vector2f proj(sf::Vector2f vector1, sf::Vector2f vector2) {
+    return dotProduct(vector2, vector1) / (magnitude(vector2) * magnitude(vector2)) * vector2;
 }

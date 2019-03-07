@@ -30,8 +30,8 @@ MovingEntity::MovingEntity(const sf::Texture &entityTexture): Entity(entityTextu
     mass = 1000.0f;
 }
 
-void MovingEntity::updateLocation() { 
-    changeTileLoc(getVelocity());
+void MovingEntity::updateLocation(sf::Time lastFrameTime) { 
+    changeTileLoc(getVelocity() * lastFrameTime.asSeconds());
 }
 
 float MovingEntity::getCdrag() { 

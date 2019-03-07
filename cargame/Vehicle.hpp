@@ -36,10 +36,13 @@ public:
     void straighten();
     void brake(float brakeForce);
     void changeThrottle(float deltaThrottle);
+    void setThrottle(float newThrottle);
     float getThrottle();
-    void updateLocation();
+    void updateLocation(sf::Time lastFrameTime);
     float getWheel();
     float getWheelBase();
+    bool braking;
+    float maintenanceThrottle();
     
 private:
     float baseAcceleration;
@@ -49,6 +52,7 @@ private:
     float wheelBase;        //should be roughly length of car/tile size
     float throttle;         //0-1, fraction of engine force
     float engineForce;      //in Newtons
+    float brakeForce;
     sf::Vector2f tractionForce();
     sf::Vector2f brakingForce();
     sf::Vector2f dragForce();

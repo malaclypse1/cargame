@@ -42,3 +42,17 @@ I need to re-think controls too: I had been thinking 'w' would be accelerate and
 * measure how long brakes are applied: if short duration, return throttle to previous amount when brakes are released
 * better: reverse engineer amount of throttle to maintain speed after braking and set throttle to that amount.
 * maybe both? if braking over threshold time, zero throttle, otherwise set throttle to match current speed?
+
+### 2/14/19 Scale ###
+Using real-world numbers for the simulation means I really need to real units (otherwise the constants will be way off). Eventually, the world view will zoom in and out, so the scale can't be related to window size. Map texture size should make a good standard. Currently, the car placeholder sprite is 958px long, and being scaled to 20% (191px). The average North American car has a length of ~4.4m. That makes a scale of 43px:1m. With 256x256 texture tiles, the tiles are about 6m across.
+
+A car traveling at 60mph is going about 27 meters per second, or 4.5 tiles per second, or about 1150px per second - that only gives about half a second to react when something gets on screen (eventually, with zoom and lookahead, that will improve). I think I need a 'model' scale: artificially damp speed to make the game more playable. We'll see...
+
+### 3/7/19 Braking ###
+Naive solution puts braking in direction opposite heading. This causes reversing after stop and inappropriate direction of braking if moving in reverse. Instead, get the component of velocity in direction of heading? This would scale braking to velocity, so thats not quite right. Should use the lower (by magnitude) of that or heading vector... just cap this velocity based braking vector to be no bigger than the unit vector.
+
+Also, lets handle the zeroing or returning throttle dealio.
+* in initial inspection for reverse engineering throttle for a specific speed, I think rollingResistance is using the wrong vector - it should be projecting velocity to heading or wheel direction. The component perpendicular to the wheels is not rollingResistance. I'll leave it as is for now, but return to it when I delve into cornering.
+* get the components of drag and rollingResistance in direction of heading
+* figure out throttle needed to make that equal (balanced by) tractionForce.
+* TODO: change throttle setting to only occur when braking is finished
