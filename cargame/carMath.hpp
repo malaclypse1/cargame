@@ -19,7 +19,7 @@ const sf::Vector2f zeroVector(0.0f, 0.0f);
 //Polar here meaning north at 0 degrees, angle going clockwise
 float magnitude(sf::Vector2f inputVector);
 float magSqr(sf::Vector2f inputVector);
-float direction(sf::Vector2f inputBector);
+float direction(sf::Vector2f inputVector); //output compass heading in degrees
 float dotProduct(sf::Vector2f vector1, sf::Vector2f vector2);
 float mph(float mps);
 sf::Vector2f unitVector(float heading);

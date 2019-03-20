@@ -121,7 +121,14 @@ Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) 
 void Vehicle::updateLocation(sf::Time lastFrameTime) {
     //need to turn car some amount depending on wheel value
     //figure car should turn 'wheel' degrees in one car length for small values of wheel
-    Entity::changeHeading(steeringWheel*magnitude(getVelocity()/getWheelBase())*lastFrameTime.asSeconds());
+    //Entity::changeHeading(steeringWheel*magnitude(getVelocity()/getWheelBase())*lastFrameTime.asSeconds());
+    
+    //At low speeds: Radius of turn is wheelbase/sin(steeringWheel)
+    //angle turned (in radians) is distanceMoved/radius
+    //distanceMoved is speed*lastFrameTime
+    //angle = speed/lastFrameTime/wheelbase*sin(steeringWheel)
+    Entity::changeHeading(magnitude(getVelocity()) * lastFrameTime.asSeconds() / getWheelBase() * sin(steeringWheel * degreesToRadians) / degreesToRadians);
+    setVelocity(magnitude(getVelocity()) * unitVector(getHeading()));
     
     //need to update velocity to be in direction of heading (unless skidding)
     //new velocity = projection of old velocity onto heading
@@ -129,9 +136,37 @@ void Vehicle::updateLocation(sf::Time lastFrameTime) {
 //    headingUnitVector = unitVector(getHeading());
 //    newVelocity = dotProduct(getVelocity(), headingUnitVector) * headingUnitVector ;
     
-    MovingEntity::changeVelocity(longitudinalForce()/getMass()*lastFrameTime.asSeconds());
+    changeVelocity(longitudinalForce()/getMass()*lastFrameTime.asSeconds());
     
     //finally call super's updateLocation function
     MovingEntity::updateLocation(lastFrameTime);
 }
 
+float Vehicle::sideslipAngle() {
+    return getHeading() - direction(getVelocity());
+}
+
+float Vehicle::vlong() {
+    return magnitude(getVelocity()) * cos(sideslipAngle());
+    //ssa of 0 -> vlong max, ssa 90 -> vlong 0
+}
+
+float Vehicle::vlat() {
+    return magnitude(getVelocity()) * sin(sideslipAngle());
+    //ssa of 90 -> vlat positive max
+}
+
+float Vehicle::slipAngleRear() {
+    //todo: inplement and add vehicle rotational velocity
+    return atan(vlat()/abs(vlong())) / degreesToRadians;
+}
+
+float Vehicle::slipAngleFront() {
+    //todo: inplement and add vehicle rotational velocity
+    return atan(vlat()/abs(vlong())) / degreesToRadians + steeringWheel;
+}
+
+sf::Vector2f Vehicle::lateralForce() {
+    //figure out cornering stiffness...
+    return getVelocity();
+}

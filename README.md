@@ -56,3 +56,17 @@ Also, lets handle the zeroing or returning throttle dealio.
 * get the components of drag and rollingResistance in direction of heading
 * figure out throttle needed to make that equal (balanced by) tractionForce.
 * TODO: change throttle setting to only occur when braking is finished
+
+### 3/20/19 High speed turning ###
+Variables that might be needed:
+* sideslipAngle: angle between velocity vector and heading
+* longVel: longitudinal velocity of car = magnitude of proj of velocity on heading, + fwd, - rev
+* latVel: lateral velocity of car = magnitude of (velocity - proj of velocity on heading), + right, - left
+* rotationalVelocity of car in rad/s, + clockwise
+* b and c: distance between center of gravity and front and rear axles respectively.
+* steeringWheel: angle of front tires
+* slipAngleFront = arctan((latVel + rotationalVelocity * b)/|longVel|)) - steeringWheel
+
+ (double checking signs: if car is skidding to the left while moving forward, steering left should reduce slipAngleFront: latVel -, rotVel 0, longVel +, .: arctan - -> steeringWheel -, so subtracting steeringWheel is right. If car is skidding to the right while moving backward: vlat+, vlong-, arctan-, so again subtracting steeringWheel reduces slipAngleFront. Not sure why reference uses sgn(vlong) to change sign of steeringWheel)
+
+Velocity is already a vector relative to world: I should look into using matrices instead of trig functions to speed things up.

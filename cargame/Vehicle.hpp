@@ -58,6 +58,12 @@ private:
     sf::Vector2f dragForce();
     sf::Vector2f rollingResistanceForce();
     sf::Vector2f longitudinalForce();
+    sf::Vector2f lateralForce();
+    float sideslipAngle();
+    float vlong();
+    float vlat();
+    float slipAngleRear();
+    float slipAngleFront();
 };
 
 

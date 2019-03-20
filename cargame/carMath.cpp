@@ -23,7 +23,8 @@ float magSqr(sf::Vector2f inputVector) {
 }
 
 float direction(sf::Vector2f inputVector) {
-    return atan2(inputVector.y, inputVector.x) / degreesToRadians;
+    return 90.0f - atan2(-inputVector.y, inputVector.x) / degreesToRadians;
+    //-y, 0x return 0, +y,0x return 180, 0y,+x return 90
 }
 
 float dotProduct(sf::Vector2f vector1, sf::Vector2f vector2) {

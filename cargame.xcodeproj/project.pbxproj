@@ -27,6 +27,16 @@
 		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		05567E6E2242D4E8002508B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 051CDFFD1D0FE99100AEA9CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 051CE0051D0FE99100AEA9CC;
+			remoteInfo = cargame;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		051CE0061D0FE99100AEA9CC /* cargame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		051CE00A1D0FE99100AEA9CC /* cargame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cargame-Info.plist"; sourceTree = "<group>"; };
@@ -52,6 +62,7 @@
 		053D181D20D06BAF00B70272 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		053D181F20D96A4000B70272 /* Controls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controls.cpp; sourceTree = "<group>"; };
 		053D182020D96A4000B70272 /* Controls.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Controls.hpp; sourceTree = "<group>"; };
+		05567E692242D4E8002508B4 /* cargameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cargameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		056167A5220252320013B1B2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		056167A7220258650013B1B2 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
@@ -62,6 +73,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		051CE0021D0FE99100AEA9CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05567E662242D4E8002508B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				051CE0061D0FE99100AEA9CC /* cargame.app */,
+				05567E692242D4E8002508B4 /* cargameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,8 +114,8 @@
 				053D181F20D96A4000B70272 /* Controls.cpp */,
 				053D182020D96A4000B70272 /* Controls.hpp */,
 				051CE0791D112F7200AEA9CC /* Config.hpp */,
-				053D181720CF07F000B70272 /* carMath.cpp */,
 				053D181920CF0BBB00B70272 /* carMath.hpp */,
+				053D181720CF07F000B70272 /* carMath.cpp */,
 				053D181C20D06BAF00B70272 /* Camera.cpp */,
 				053D181D20D06BAF00B70272 /* Camera.hpp */,
 				05853D441E86EE76005C54E7 /* MovingEntity.hpp */,
@@ -160,17 +179,41 @@
 			productReference = 051CE0061D0FE99100AEA9CC /* cargame.app */;
 			productType = "com.apple.product-type.application";
 		};
+		05567E682242D4E8002508B4 /* cargameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05567E702242D4E8002508B4 /* Build configuration list for PBXNativeTarget "cargameTests" */;
+			buildPhases = (
+				05567E652242D4E8002508B4 /* Sources */,
+				05567E662242D4E8002508B4 /* Frameworks */,
+				05567E672242D4E8002508B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05567E6F2242D4E8002508B4 /* PBXTargetDependency */,
+			);
+			name = cargameTests;
+			productName = cargameTests;
+			productReference = 05567E692242D4E8002508B4 /* cargameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		051CDFFD1D0FE99100AEA9CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Philip Routley";
 				TargetAttributes = {
 					051CE0051D0FE99100AEA9CC = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					05567E682242D4E8002508B4 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 051CE0051D0FE99100AEA9CC;
 					};
 				};
 			};
@@ -187,6 +230,7 @@
 			projectRoot = "";
 			targets = (
 				051CE0051D0FE99100AEA9CC /* cargame */,
+				05567E682242D4E8002508B4 /* cargameTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +248,13 @@
 				053D181220C9CB8100B70272 /* car.png in Resources */,
 				051CE0141D0FE99100AEA9CC /* nice_music.ogg in Resources */,
 				051CE0121D0FE99100AEA9CC /* cute_image.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05567E672242D4E8002508B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +294,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05567E652242D4E8002508B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05567E6F2242D4E8002508B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 051CE0051D0FE99100AEA9CC /* cargame */;
+			targetProxy = 05567E6E2242D4E8002508B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		051CE0191D0FE99100AEA9CC /* Debug */ = {
@@ -413,6 +479,83 @@
 			};
 			name = Release;
 		};
+		05567E712242D4E8002508B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = cargameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chicmagnate.cargameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cargame.app/Contents/MacOS/cargame";
+			};
+			name = Debug;
+		};
+		05567E722242D4E8002508B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = cargameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chicmagnate.cargameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cargame.app/Contents/MacOS/cargame";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -430,6 +573,15 @@
 			buildConfigurations = (
 				051CE01C1D0FE99100AEA9CC /* Debug */,
 				051CE01D1D0FE99100AEA9CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05567E702242D4E8002508B4 /* Build configuration list for PBXNativeTarget "cargameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05567E712242D4E8002508B4 /* Debug */,
+				05567E722242D4E8002508B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
