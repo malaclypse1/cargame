@@ -16,9 +16,18 @@ void MovingEntity::setVelocity(sf::Vector2f newVelocity) {
     velocity = newVelocity;
 }
 
-void MovingEntity::changeVelocity(sf::Vector2f newVelocity) { 
-    velocity += newVelocity;
+void MovingEntity::changeVelocity(sf::Vector2f addVelocity) {
+    velocity += addVelocity;
 }
+
+void MovingEntity::setAngularVelocity(float newAngularVelocity) {
+    angularVelocity = newAngularVelocity;
+}
+
+void MovingEntity::changeAngularVelocity(float addAngularVelocity) {
+    angularVelocity += addAngularVelocity;
+}
+
 
 sf::Vector2f MovingEntity::getVelocity() { 
     return velocity;
@@ -28,6 +37,8 @@ MovingEntity::MovingEntity(const sf::Texture &entityTexture): Entity(entityTextu
     Cdrag = 0.4257f;
     Crr = 12.8f;
     mass = 1000.0f;
+    inertia = 20.0f/12.0f * mass; //4m x 2m car: 4^2 + 2^2 = 20
+    angularVelocity = 0.0f;
 }
 
 void MovingEntity::updateLocation(sf::Time lastFrameTime) { 
@@ -44,6 +55,14 @@ float MovingEntity::getCrr() {
 
 float MovingEntity::getMass() {
     return mass;
+}
+
+float MovingEntity::getInertia() {
+    return inertia;
+}
+
+float MovingEntity::getAngularVelocity() {
+    return angularVelocity;
 }
 
 

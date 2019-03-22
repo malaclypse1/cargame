@@ -56,13 +56,13 @@ sf::Vector2i Entity::getWorldLoc() {
 }
 
 
-void Entity::changeHeading(float newHeading) { 
-    heading += newHeading;
+void Entity::changeHeading(float addHeading) {
+    heading += addHeading;
 }
 
 
-void Entity::changeHeight(int newHeight) { 
-    z += newHeight;
+void Entity::changeHeight(int addHeight) {
+    z += addHeight;
 }
 
 

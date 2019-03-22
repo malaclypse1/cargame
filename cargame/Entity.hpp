@@ -40,8 +40,8 @@ public:
     void setWindowPosition(sf::Vector2f position);
     void changeWorldLoc(sf::Vector2i newWorldLoc);
     void changeTileLoc(sf::Vector2f newTileLoc);
-    void changeHeight(int newHeight);
-    void changeHeading(float newHeading);
+    void changeHeight(int addHeight);
+    void changeHeading(float addHeading);
     
     //=============================================
     //accessors
