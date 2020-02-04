@@ -38,7 +38,7 @@ MovingEntity::MovingEntity(const sf::Texture &entityTexture): Entity(entityTextu
     Crr = 12.8f;
     mass = 1000.0f;
     inertia = 20.0f/12.0f * mass; //4m x 2m car: 4^2 + 2^2 = 20
-    angularVelocity = 0.0f;
+    angularVelocity = 0.0f; //rads/s
 }
 
 void MovingEntity::updateLocation(sf::Time lastFrameTime) { 

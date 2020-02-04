@@ -36,6 +36,6 @@ public:
     float getCrr();
     float getMass();
     float getInertia();
-    float getAngularVelocity();
+    float getAngularVelocity(); //rads/s
 };
 #endif /* MovingEntity_h */

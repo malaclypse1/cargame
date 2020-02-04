@@ -58,6 +58,9 @@ sf::Vector2i Entity::getWorldLoc() {
 
 void Entity::changeHeading(float addHeading) {
     heading += addHeading;
+    //normalize for 0-360
+    if (heading < 0.0f) heading +=360.0f;
+    if (heading >360.0f) heading -=360.0f;
 }
 
 

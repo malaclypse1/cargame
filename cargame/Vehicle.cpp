@@ -74,6 +74,9 @@ sf::Vector2f Vehicle::dragForce() {
 sf::Vector2f Vehicle::rollingResistanceForce() {
     return - getCrr() * getVelocity();
     // maybe this should only be in direction of heading? revisit when we do cornering
+    // more: it should be in direction each wheel is rolling?
+    // for now we will leave it on velocity direction, which will provide more RR
+    // when sliding and cornering - maybe not such a bad thing
 }
 
 sf::Vector2f Vehicle::longitudinalForce() {
@@ -107,6 +110,7 @@ float Vehicle::getWheelBase() {
     return wheelBase;
 }
 
+// *** CONSTRUCTOR ***
 Vehicle::Vehicle(const sf::Texture &entityTexture): MovingEntity(entityTexture) {
     sf::Vector2f centerOfTile(0.5f, 0.5f);
     sf::Vector2i centerOfWorld(127, 127);
@@ -141,7 +145,7 @@ void Vehicle::updateLocation(sf::Time lastFrameTime) {
     
     changeVelocity((longitudinalForce() + corneringForce())/getMass()*lastFrameTime.asSeconds());
     MovingEntity::changeAngularVelocity(torque()/getInertia() * lastFrameTime.asSeconds());
-    Entity::changeHeading(MovingEntity::getAngularVelocity() * lastFrameTime.asSeconds());
+    Entity::changeHeading(MovingEntity::getAngularVelocity() * lastFrameTime.asSeconds() / degreesToRadians);
     
     //finally call super's updateLocation function
     MovingEntity::updateLocation(lastFrameTime);
@@ -160,29 +164,40 @@ float Vehicle::vlat() {
     return magnitude(getVelocity()) * sin(sideslipAngle());
     //ssa of 90 -> vlat positive max
 }
-
+// 4/19:
+// switching the signs of angularvel in the following to functions to + and - seems to fix increasing cornering with straight wheel. Something is wrong with signs and directions. Need to parse through all functions...
+// maybe instead of taking angles at clockwise from north and converting them all, I should use ccw from east as per CS norm and only convert for player facing stuff...
+// similarly, leave everything in rads except player facing stuff and SFML stuff...
 float Vehicle::slipAngleRear() {
-    //todo: inplement and add vehicle rotational velocity
-    return atan2(vlat(),abs(vlong())); // in rads
+    //todo: implement and add vehicle rotational velocity
+    return atan2(vlat(),abs(vlong())) - getAngularVelocity(); // in rads
 }
 
 float Vehicle::slipAngleFront() {
-    //todo: inplement and add vehicle rotational velocity
-    return atan2(vlat(),abs(vlong())) + steeringWheel * degreesToRadians; // in rads
+    //todo: implement and add vehicle rotational velocity
+    return atan2(vlat(),abs(vlong())) + getAngularVelocity() + steeringWheel * degreesToRadians; // in rads
 }
 
 float Vehicle::corneringStiffness(float slipAngle) {
-    return 4000.0f / degreesToRadians; //temp value
+    return 100.0f / degreesToRadians; //temp value
 }
 
 sf::Vector2f Vehicle::lateralForce(float slipAngle) {
     // lateral force = corneringStiffness * slipAngle in direction 90 right of heading
     return corneringStiffness(slipAngle) * slipAngle * unitVector(getHeading() + 90.0f);
 }
-
+// *** VV something wrong in this one VV ***
 sf::Vector2f Vehicle::corneringForce() {
     return lateralForce(slipAngleRear()) + cos(steeringWheel * degreesToRadians) * lateralForce(slipAngleFront());
 }
+//torque = inertia * angular acceleration
 float Vehicle::torque() {
-    return -magnitude(lateralForce(slipAngleRear())) * wheelBase/2 + magnitude(cos(steeringWheel * degreesToRadians) * lateralForce(slipAngleFront())) * wheelBase/2;
+    return
+        // rear wheel
+        - magnitude(lateralForce(slipAngleRear())) * wheelBase/2
+        // front wheel
+        + magnitude(
+            cos(steeringWheel * degreesToRadians)
+            * lateralForce(slipAngleFront())
+        ) * wheelBase/2;
 }

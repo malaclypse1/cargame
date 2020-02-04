@@ -43,12 +43,13 @@ public:
     float getWheelBase();
     bool braking;
     float maintenanceThrottle();
+    float torque(); //move to private later
     
-private:
+    
+//private:
     float baseAcceleration;
     float baseBrakeForce;
     float baseTurnRate; //not used?
-    float torque();
     float steeringWheel;            //relative direction of wheels to heading
     float wheelBase;        //should be roughly length of car/tile size
     float throttle;         //0-1, fraction of engine force

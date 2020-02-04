@@ -172,6 +172,10 @@ int main(int, char const**)
         ss << " heading: " << playerCar.getHeading() << "\nvelocity: " << magnitude(vel) * 256.0f;
         ss << " wheel: " << playerCar.getWheel();
         ss << "\nlocation (x: " << world.x << '/' << tile.x << " y: " << world.y << '/' << tile.y << ")";
+        ss << "\ntorque: " << playerCar.torque() << " ang vel: " << playerCar.getAngularVelocity();
+        ss << "\nslipAngleRear: " << playerCar.slipAngleRear() << " Front: " << playerCar.slipAngleFront();
+        ss << "\ncorneringForce: x: " << playerCar.corneringForce().x << ", y: "<< playerCar.corneringForce().y;
+        ss << "\nsideSlipAngle: " << playerCar.sideslipAngle() / degreesToRadians;
         std::string s(ss.str());
         text.setString(s);
         window.draw(text);

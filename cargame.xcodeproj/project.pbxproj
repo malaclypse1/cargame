@@ -25,6 +25,8 @@
 		056167A6220252320013B1B2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 056167A5220252320013B1B2 /* README.md */; };
 		056167A8220258650013B1B2 /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 056167A7220258650013B1B2 /* screenshot1.png */; };
 		0586C1C81E8EC23D003BB06F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586C1C71E8EC23D003BB06F /* Component.cpp */; };
+		05DA9B97227223F900872EEB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DA9B96227223F900872EEB /* main.cpp */; };
+		05DA9B9B2272240D00872EEB /* test_driving_sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DA9B8E2272215000872EEB /* test_driving_sim.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,18 @@
 			remoteInfo = cargame;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		05DA9B92227223F900872EEB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		051CE0061D0FE99100AEA9CC /* cargame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +83,10 @@
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		0586C1C71E8EC23D003BB06F /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
+		05DA9B8D22721F8700872EEB /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		05DA9B8E2272215000872EEB /* test_driving_sim.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_driving_sim.cpp; sourceTree = "<group>"; };
+		05DA9B94227223F900872EEB /* TestCarGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestCarGame; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DA9B96227223F900872EEB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +104,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05DA9B91227223F900872EEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -95,6 +120,7 @@
 				056167A7220258650013B1B2 /* screenshot1.png */,
 				056167A5220252320013B1B2 /* README.md */,
 				051CE0081D0FE99100AEA9CC /* cargame */,
+				05DA9B95227223F900872EEB /* TestCarGame */,
 				051CE0071D0FE99100AEA9CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +130,7 @@
 			children = (
 				051CE0061D0FE99100AEA9CC /* cargame.app */,
 				05567E692242D4E8002508B4 /* cargameTests.xctest */,
+				05DA9B94227223F900872EEB /* TestCarGame */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +185,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		05DA9B95227223F900872EEB /* TestCarGame */ = {
+			isa = PBXGroup;
+			children = (
+				05DA9B8D22721F8700872EEB /* catch.hpp */,
+				05DA9B8E2272215000872EEB /* test_driving_sim.cpp */,
+				05DA9B96227223F900872EEB /* main.cpp */,
+			);
+			path = TestCarGame;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,6 +234,23 @@
 			productReference = 05567E692242D4E8002508B4 /* cargameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		05DA9B93227223F900872EEB /* TestCarGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05DA9B98227223F900872EEB /* Build configuration list for PBXNativeTarget "TestCarGame" */;
+			buildPhases = (
+				05DA9B90227223F900872EEB /* Sources */,
+				05DA9B91227223F900872EEB /* Frameworks */,
+				05DA9B92227223F900872EEB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestCarGame;
+			productName = TestCarGame;
+			productReference = 05DA9B94227223F900872EEB /* TestCarGame */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,6 +269,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 051CE0051D0FE99100AEA9CC;
 					};
+					05DA9B93227223F900872EEB = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 051CE0001D0FE99100AEA9CC /* Build configuration list for PBXProject "cargame" */;
@@ -231,6 +289,7 @@
 			targets = (
 				051CE0051D0FE99100AEA9CC /* cargame */,
 				05567E682242D4E8002508B4 /* cargameTests */,
+				05DA9B93227223F900872EEB /* TestCarGame */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +357,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05DA9B90227223F900872EEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DA9B97227223F900872EEB /* main.cpp in Sources */,
+				05DA9B9B2272240D00872EEB /* test_driving_sim.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +624,66 @@
 			};
 			name = Release;
 		};
+		05DA9B99227223F900872EEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		05DA9B9A227223F900872EEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -582,6 +710,15 @@
 			buildConfigurations = (
 				05567E712242D4E8002508B4 /* Debug */,
 				05567E722242D4E8002508B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05DA9B98227223F900872EEB /* Build configuration list for PBXNativeTarget "TestCarGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DA9B99227223F900872EEB /* Debug */,
+				05DA9B9A227223F900872EEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
