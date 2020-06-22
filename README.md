@@ -44,7 +44,7 @@ I need to re-think controls too: I had been thinking 'w' would be accelerate and
 * maybe both? if braking over threshold time, zero throttle, otherwise set throttle to match current speed?
 
 ### 2/14/19 Scale ###
-Using real-world numbers for the simulation means I really need to real units (otherwise the constants will be way off). Eventually, the world view will zoom in and out, so the scale can't be related to window size. Map texture size should make a good standard. Currently, the car placeholder sprite is 958px long, and being scaled to 20% (191px). The average North American car has a length of ~4.4m. That makes a scale of 43px:1m. With 256x256 texture tiles, the tiles are about 6m across.
+Using real-world numbers for the simulation means I really need to use real units (otherwise the constants will be way off). Eventually, the world view will zoom in and out, so the scale can't be related to window size. Map texture size should make a good standard. Currently, the car placeholder sprite is 958px long, and being scaled to 20% (191px). The average North American car has a length of ~4.4m. That makes a scale of 43px:1m. With 256x256 texture tiles, the tiles are about 6m across.
 
 A car traveling at 60mph is going about 27 meters per second, or 4.5 tiles per second, or about 1150px per second - that only gives about half a second to react when something gets on screen (eventually, with zoom and lookahead, that will improve). I think I need a 'model' scale: artificially damp speed to make the game more playable. We'll see...
 
@@ -70,3 +70,13 @@ Variables that might be needed:
  (double checking signs: if car is skidding to the left while moving forward, steering left should reduce slipAngleFront: latVel -, rotVel 0, longVel +, .: arctan - -> steeringWheel -, so subtracting steeringWheel is right. If car is skidding to the right while moving backward: vlat+, vlong-, arctan-, so again subtracting steeringWheel reduces slipAngleFront. Not sure why reference uses sgn(vlong) to change sign of steeringWheel)
 
 Velocity is already a vector relative to world: I should look into using matrices instead of trig functions to speed things up.
+
+### 6/22/20 Been a long time ###
+Since last update I interviewed and was hired by a big tech company, and have not worked on any personal projects since that process began. Part of that was updating to MacOS Catalina broke all my X-code projects and the few times I decided to work on a project I ended up spending a couple hours doing updates instead of coding.
+Anyway,  it has been 15 months and I don't remember my code so my current goal is to either figure out where I left off, which may require re-writing some of it.
+
+After updating the target to MacOS 10.15, keyboard control isn't working. This is due to app input monitoring privileges and using realtime keyboard input rather than sf::Event. https://en.sfml-dev.org/forums/index.php?topic=26849.0
+This means this may be a good time to re-write the input code...
+https://www.sfml-dev.org/tutorials/2.5/window-events.php
+
+* Implemented booleans in Controls class for if a key is held down (true) or not (false) and sf:Event in main to toggle those.

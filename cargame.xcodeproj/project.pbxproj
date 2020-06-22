@@ -52,7 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		051CE0061D0FE99100AEA9CC /* cargame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		051CE00A1D0FE99100AEA9CC /* cargame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cargame-Info.plist"; sourceTree = "<group>"; };
 		051CE00B1D0FE99100AEA9CC /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		051CE00D1D0FE99100AEA9CC /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
@@ -76,16 +75,17 @@
 		053D181D20D06BAF00B70272 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		053D181F20D96A4000B70272 /* Controls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controls.cpp; sourceTree = "<group>"; };
 		053D182020D96A4000B70272 /* Controls.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Controls.hpp; sourceTree = "<group>"; };
-		05567E692242D4E8002508B4 /* cargameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cargameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		056167A5220252320013B1B2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		056167A7220258650013B1B2 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		05853D441E86EE76005C54E7 /* MovingEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingEntity.hpp; sourceTree = "<group>"; };
 		05853D451E86F05C005C54E7 /* Vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vehicle.hpp; sourceTree = "<group>"; };
 		05853D461E88AA8F005C54E7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		0586C1C71E8EC23D003BB06F /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
+		05C04D04247C7E8900E0FFA1 /* cargame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C04D05247C7E8900E0FFA1 /* cargameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cargameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C04D06247C7E8900E0FFA1 /* TestCarGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestCarGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DA9B8D22721F8700872EEB /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		05DA9B8E2272215000872EEB /* test_driving_sim.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_driving_sim.cpp; sourceTree = "<group>"; };
-		05DA9B94227223F900872EEB /* TestCarGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestCarGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DA9B96227223F900872EEB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,18 +121,10 @@
 				056167A5220252320013B1B2 /* README.md */,
 				051CE0081D0FE99100AEA9CC /* cargame */,
 				05DA9B95227223F900872EEB /* TestCarGame */,
-				051CE0071D0FE99100AEA9CC /* Products */,
+				05C04D04247C7E8900E0FFA1 /* cargame.app */,
+				05C04D05247C7E8900E0FFA1 /* cargameTests.xctest */,
+				05C04D06247C7E8900E0FFA1 /* TestCarGame */,
 			);
-			sourceTree = "<group>";
-		};
-		051CE0071D0FE99100AEA9CC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				051CE0061D0FE99100AEA9CC /* cargame.app */,
-				05567E692242D4E8002508B4 /* cargameTests.xctest */,
-				05DA9B94227223F900872EEB /* TestCarGame */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		051CE0081D0FE99100AEA9CC /* cargame */ = {
@@ -213,7 +205,7 @@
 			);
 			name = cargame;
 			productName = cargame;
-			productReference = 051CE0061D0FE99100AEA9CC /* cargame.app */;
+			productReference = 05C04D04247C7E8900E0FFA1 /* cargame.app */;
 			productType = "com.apple.product-type.application";
 		};
 		05567E682242D4E8002508B4 /* cargameTests */ = {
@@ -231,7 +223,7 @@
 			);
 			name = cargameTests;
 			productName = cargameTests;
-			productReference = 05567E692242D4E8002508B4 /* cargameTests.xctest */;
+			productReference = 05C04D05247C7E8900E0FFA1 /* cargameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		05DA9B93227223F900872EEB /* TestCarGame */ = {
@@ -248,7 +240,7 @@
 			);
 			name = TestCarGame;
 			productName = TestCarGame;
-			productReference = 05DA9B94227223F900872EEB /* TestCarGame */;
+			productReference = 05C04D06247C7E8900E0FFA1 /* TestCarGame */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -258,7 +250,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Philip Routley";
 				TargetAttributes = {
 					051CE0051D0FE99100AEA9CC = {
@@ -277,13 +269,14 @@
 			};
 			buildConfigurationList = 051CE0001D0FE99100AEA9CC /* Build configuration list for PBXProject "cargame" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 051CDFFC1D0FE99100AEA9CC;
-			productRefGroup = 051CE0071D0FE99100AEA9CC /* Products */;
+			productRefGroup = 051CDFFC1D0FE99100AEA9CC;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -403,6 +396,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: ptroutley@comcast.net (K3XW6P6Z5H)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -428,8 +423,9 @@
 					/usr/local/lib/,
 					"$(inherited)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SFML_SYSTEM)",
@@ -477,6 +473,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: ptroutley@comcast.net (K3XW6P6Z5H)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -500,7 +498,8 @@
 					/usr/local/lib/,
 					"$(inherited)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"$(SFML_SYSTEM)",
@@ -529,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = "cargame/cargame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chicmagnate.${PRODUCT_NAME:rfc1034identifier}";
@@ -540,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				INFOPLIST_FILE = "cargame/cargame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chicmagnate.${PRODUCT_NAME:rfc1034identifier}";

@@ -69,7 +69,7 @@ int main(int, char const**)
     }
     sf::Text text("Hello SFML", font, 50);
     sf::Color color(0,0,128);
-    text.setColor(color);
+    text.setFillColor(color);
 
     // Load a music to play
 //    sf::Music music;
@@ -102,7 +102,37 @@ int main(int, char const**)
                     //if key is escape, close window
                     if (event.key.code == sf::Keyboard::Escape)
                         window.close();
-                        break;
+                    //toggle key control booleans
+                    else if (event.key.code == player.left)
+                        player.leftKey = true;
+                    else if (event.key.code == player.right)
+                        player.rightKey = true;
+                    else if (event.key.code == player.hardLeft)
+                        player.hardLeftKey = true;
+                    else if (event.key.code == player.hardRight)
+                        player.hardRightKey = true;
+                    else if (event.key.code == player.throttleUp)
+                        player.throttleUpKey = true;
+                    else if (event.key.code == player.throttleDown)
+                        player.throttleDownKey = true;
+                    
+                    break;
+                case sf::Event::KeyReleased:
+                //toggle key control booleans
+                if (event.key.code == player.left)
+                    player.leftKey = false;
+                else if (event.key.code == player.right)
+                    player.rightKey = false;
+                else if (event.key.code == player.hardLeft)
+                    player.hardLeftKey = false;
+                else if (event.key.code == player.hardRight)
+                    player.hardRightKey = false;
+                else if (event.key.code == player.throttleUp)
+                    player.throttleUpKey = false;
+                else if (event.key.code == player.throttleDown)
+                    player.throttleDownKey = false;
+                
+                break;
                 default:
                     break;
             }
@@ -111,26 +141,26 @@ int main(int, char const**)
         if (true /*playerCar.getState() == SS_GOOD*/) {
             
             //turns TODO: cleanup and allow cording
-            if (sf::Keyboard::isKeyPressed(player.left))
+            if (player.leftKey)
                 playerCar.turnLeft(turnRate);
-            else if (sf::Keyboard::isKeyPressed(player.right))
+            else if (player.rightKey)
                 playerCar.turnRight(turnRate);
-            else if (sf::Keyboard::isKeyPressed(player.hardLeft))
+            else if (player.hardLeftKey)
                 playerCar.turnLeft(turnRate*3.0f);
-            else if (sf::Keyboard::isKeyPressed(player.hardRight))
+            else if (player.hardRightKey)
                 playerCar.turnRight(turnRate*3.0f);
             else
                 playerCar.straighten();
 
             
             //thrust
-            if (sf::Keyboard::isKeyPressed(player.throttleUp))
+            if (player.throttleUpKey)
                 playerCar.changeThrottle(accel);
-            else if (sf::Keyboard::isKeyPressed(player.throttleDown))
+            else if (player.throttleDownKey)
                 playerCar.changeThrottle(-accel);
             
             //brake
-            if (sf::Keyboard::isKeyPressed(player.brake)) {
+            if (player.brakeKey) {
                 playerCar.braking = true;
                 playerCar.setThrottle(playerCar.maintenanceThrottle());
                 //I'd rather only set the throttle when braking is done...

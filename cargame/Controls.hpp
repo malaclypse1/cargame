@@ -16,6 +16,7 @@ class Controls {
 public:
     Controls();
     sf::Keyboard::Key left, right, hardLeft, hardRight, throttleUp, throttleDown, brake;
+    bool leftKey, rightKey, hardLeftKey, hardRightKey, throttleUpKey, throttleDownKey, brakeKey;
 };
     
 #endif /* Controls_hpp */
